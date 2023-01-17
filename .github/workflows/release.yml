@@ -30,6 +30,12 @@ jobs:
         run: npm run build
       - name: Run unit tests
         run: npm run test
+      - name: Setup environment variables for e2e tests
+        run: |
+          echo "NODE_ENV=production" >> .env
+          echo "API_DOMAIN=localhost" >> .env
+          echo "PORT=3000" >> .env
+          echo "CORS_ORIGINS=http://localhost,http://localhost:3000" >> .env
       - name: Run e2e tests
         run: npm run test:e2e
       - name: Release

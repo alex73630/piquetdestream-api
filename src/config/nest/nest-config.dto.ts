@@ -13,7 +13,7 @@ export class NestConfigDto {
 	PORT: number
 
 	@Expose()
-	@Transform(({ value }) => value.split(","))
+	@Transform(({ value }) => value?.split(","))
 	@IsString({ each: true })
 	@IsNotEmpty()
 	CORS_ORIGINS: string[]

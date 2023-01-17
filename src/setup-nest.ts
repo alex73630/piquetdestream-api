@@ -1,8 +1,8 @@
-import { ValidationPipe, VersioningType } from "@nestjs/common"
+import { INestApplication, ValidationPipe, VersioningType } from "@nestjs/common"
 import { NestExpressApplication } from "@nestjs/platform-express"
 import { Request, Response } from "express"
 
-export async function setupNest(app: NestExpressApplication): Promise<void> {
+export async function setupNest(app: NestExpressApplication | INestApplication): Promise<void> {
 	// Setup shutdown hooks
 	app.enableShutdownHooks()
 
