@@ -48,7 +48,7 @@ WORKDIR /usr/src/app
 
 COPY --chown=nestuser:nestuser package*.json ./
 
-RUN npm install --only=production
+RUN npm pkg delete scripts.prepare && npm install --only=production
 
 COPY --chown=nestuser:nestuser . .
 
