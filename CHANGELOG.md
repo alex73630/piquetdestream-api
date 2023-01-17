@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/alex73630/piquetdestream-api/compare/v1.5.2...v1.6.0) (2023-01-17)
+
+
+### Features
+
+* add basic counter setup ([4afbeb1](https://github.com/alex73630/piquetdestream-api/commit/4afbeb17589ce38dd6d40bb620f53ee400438bdb))
+
 ## [1.5.2](https://github.com/alex73630/piquetdestream-api/compare/v1.5.1...v1.5.2) (2023-01-17)
 
 
