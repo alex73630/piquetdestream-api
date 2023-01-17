@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/alex73630/piquetdestream-api/compare/v1.1.0...v1.2.0) (2023-01-17)
+
+
+### Features
+
+* add deployment to fly.io ([592a1fe](https://github.com/alex73630/piquetdestream-api/commit/592a1fe7b6a727f4a94a8b044c2a44d0742da63d))
+
 # [1.1.0](https://github.com/alex73630/piquetdestream-api/compare/v1.0.0...v1.1.0) (2023-01-17)
 
 
