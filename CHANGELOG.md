@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/alex73630/piquetdestream-api/compare/v1.3.0...v1.4.0) (2023-01-17)
+
+
+### Bug Fixes
+
+* **ci:** put it in the right pipeline ([fd1076e](https://github.com/alex73630/piquetdestream-api/commit/fd1076e3bfb740d72286e223ec6466823c779706))
+
+
+### Features
+
+* first successful deployment (for real) ([0898d88](https://github.com/alex73630/piquetdestream-api/commit/0898d886bb046b443a5b2da9840855870b92cf50))
+
 ## [1.3.1](https://github.com/alex73630/piquetdestream-api/compare/v1.3.0...v1.3.1) (2023-01-17)
 
 
