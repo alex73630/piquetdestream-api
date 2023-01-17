@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/alex73630/piquetdestream-api/compare/v1.0.0...v1.1.0) (2023-01-17)
+
+
+### Features
+
+* **helloasso:** add basic api support ([1b51e88](https://github.com/alex73630/piquetdestream-api/commit/1b51e88760ec2c6891fb8f35d1d86fc3d36ff2cd))
+
 # 1.0.0 (2023-01-17)
 
 
