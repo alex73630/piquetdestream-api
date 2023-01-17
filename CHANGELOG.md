@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/alex73630/piquetdestream-api/compare/v1.5.0...v1.5.1) (2023-01-17)
+
+
+### Bug Fixes
+
+* issue with port ([e3dc48a](https://github.com/alex73630/piquetdestream-api/commit/e3dc48a8dc7b4d1c13067f69442c55a129fe3c9f))
+
 # [1.5.0](https://github.com/alex73630/piquetdestream-api/compare/v1.4.0...v1.5.0) (2023-01-17)
 
 
