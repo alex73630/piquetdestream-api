@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/alex73630/piquetdestream-api/compare/v1.4.0...v1.5.0) (2023-01-17)
+
+
+### Features
+
+* real deployment here ([bdebbec](https://github.com/alex73630/piquetdestream-api/commit/bdebbec1fd522caa3db99716163c53412b524a03))
+
 # [1.4.0](https://github.com/alex73630/piquetdestream-api/compare/v1.3.0...v1.4.0) (2023-01-17)
 
 
