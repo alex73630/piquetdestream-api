@@ -7,8 +7,11 @@ processes = []
 
 [build]
   image = "ghcr.io/alex73630/piquetdestream-api:master"
+  build-target = "production"
 
 [env]
+  PORT = 3000
+  NODE_ENV = production
 
 [experimental]
   auto_rollback = true
