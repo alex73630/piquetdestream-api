@@ -6,7 +6,7 @@ kill_timeout = 5
 processes = []
 
 [build]
-  image = "ghcr.io/alex73630/piquetdestream-api"
+  image = "ghcr.io/alex73630/piquetdestream-api:master"
 
 [env]
 
