@@ -14,13 +14,13 @@
  * * `Number` - The field should be a number
  */
 export enum HelloAsso_Api_V5_Models_Enums_FieldType {
-	DATE = 'Date',
-	TEXT_INPUT = 'TextInput',
-	FREE_TEXT = 'FreeText',
-	CHOICE_LIST = 'ChoiceList',
-	FILE = 'File',
-	YES_NO = 'YesNo',
-	PHONE = 'Phone',
-	ZIPCODE = 'Zipcode',
-	NUMBER = 'Number',
+	DATE = "Date",
+	TEXT_INPUT = "TextInput",
+	FREE_TEXT = "FreeText",
+	CHOICE_LIST = "ChoiceList",
+	FILE = "File",
+	YES_NO = "YesNo",
+	PHONE = "Phone",
+	ZIPCODE = "Zipcode",
+	NUMBER = "Number"
 }

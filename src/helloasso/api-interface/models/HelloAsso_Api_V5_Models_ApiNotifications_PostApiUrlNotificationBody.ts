@@ -6,6 +6,5 @@ export type HelloAsso_Api_V5_Models_ApiNotifications_PostApiUrlNotificationBody 
 	/**
 	 * The Api notification Url
 	 */
-	url: string;
-};
-
+	url: string
+}

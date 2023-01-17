@@ -6,6 +6,5 @@ export type HelloAsso_Api_V5_Models_Accounts_ApiClients_PublicPutPartnerApiClien
 	/**
 	 * Partner domain : Url used to grant authorization redirection
 	 */
-	domain?: string;
-};
-
+	domain?: string
+}

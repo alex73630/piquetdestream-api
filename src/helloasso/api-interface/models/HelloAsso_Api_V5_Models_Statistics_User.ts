@@ -3,7 +3,6 @@
 /* eslint-disable */
 
 export type HelloAsso_Api_V5_Models_Statistics_User = {
-	firstName?: string;
-	lastName?: string;
-};
-
+	firstName?: string
+	lastName?: string
+}

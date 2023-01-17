@@ -6,51 +6,50 @@ export type HelloAsso_Api_V5_Models_Directory_ListOrganizationsRequest = {
 	/**
 	 * Textual search for organization name
 	 */
-	name?: string;
+	name?: string
 	/**
 	 * Textual search for organization description
 	 */
-	description?: string;
+	description?: string
 	/**
 	 * The categories of the organizations
 	 */
-	categories?: Array<string>;
+	categories?: Array<string>
 	/**
 	 * The organization types
 	 */
-	types?: Array<string>;
+	types?: Array<string>
 	/**
 	 * The zip codes where the organizations are located
 	 */
-	zipCodes?: Array<string>;
+	zipCodes?: Array<string>
 	/**
 	 * The cities where the organizations are located
 	 */
-	cities?: Array<string>;
+	cities?: Array<string>
 	/**
 	 * The regions where the organizations are located
 	 */
-	regions?: Array<string>;
+	regions?: Array<string>
 	/**
 	 * The departments where the organizations are located
 	 */
-	departments?: Array<string>;
+	departments?: Array<string>
 	/**
 	 * Allow only organization with a fiscal receipt eligibility
 	 */
-	fiscalReceiptEligibility?: boolean;
+	fiscalReceiptEligibility?: boolean
 	/**
 	 * Allow only Organization with internal tags
 	 * this filter is for special operations only
 	 */
-	internalTags?: Array<string>;
+	internalTags?: Array<string>
 	/**
 	 * Allow only Organization with public tags
 	 */
-	tags?: Array<string>;
+	tags?: Array<string>
 	/**
 	 * Allow only Organization with linked partners
 	 */
-	linkedPartners?: Array<string>;
-};
-
+	linkedPartners?: Array<string>
+}

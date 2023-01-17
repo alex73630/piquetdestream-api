@@ -9,10 +9,9 @@ export type HelloAsso_Api_V5_Models_Forms_TermModel = {
 	/**
 	 * Term Date
 	 */
-	date?: string;
+	date?: string
 	/**
 	 * Term Amount
 	 */
-	amount?: number;
-};
-
+	amount?: number
+}

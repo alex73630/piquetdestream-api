@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { HelloAsso_Models_Enums_GlobalRole } from './HelloAsso_Models_Enums_GlobalRole';
+import type { HelloAsso_Models_Enums_GlobalRole } from "./HelloAsso_Models_Enums_GlobalRole"
 
 /**
  * OrganizationLightModel class
@@ -11,34 +11,33 @@ export type HelloAsso_Api_V5_Models_Organization_OrganizationLightModel = {
 	/**
 	 * Logo of organization
 	 */
-	logo?: string;
+	logo?: string
 	/**
 	 * Name of organization
 	 */
-	name?: string;
+	name?: string
 	/**
 	 * Organization Role
 	 */
-	role?: HelloAsso_Models_Enums_GlobalRole;
+	role?: HelloAsso_Models_Enums_GlobalRole
 	/**
 	 * Organization city
 	 */
-	city?: string;
+	city?: string
 	/**
 	 * Organization zip code
 	 */
-	zipCode?: string;
+	zipCode?: string
 	/**
 	 * Organization description
 	 */
-	description?: string;
+	description?: string
 	/**
 	 * The organization url
 	 */
-	url?: string;
+	url?: string
 	/**
 	 * The organization slug
 	 */
-	organizationSlug?: string;
-};
-
+	organizationSlug?: string
+}

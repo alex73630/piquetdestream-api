@@ -1,16 +1,15 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_SynchronizableFormModel } from '../models/HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_SynchronizableFormModel';
-import type { HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_SynchronizableOrganizationModel } from '../models/HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_SynchronizableOrganizationModel';
-import type { HelloAsso_Api_V5_Models_Directory_ListFormsRequest } from '../models/HelloAsso_Api_V5_Models_Directory_ListFormsRequest';
-import type { HelloAsso_Api_V5_Models_Directory_ListOrganizationsRequest } from '../models/HelloAsso_Api_V5_Models_Directory_ListOrganizationsRequest';
+import type { HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_SynchronizableFormModel } from "../models/HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_SynchronizableFormModel"
+import type { HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_SynchronizableOrganizationModel } from "../models/HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_SynchronizableOrganizationModel"
+import type { HelloAsso_Api_V5_Models_Directory_ListFormsRequest } from "../models/HelloAsso_Api_V5_Models_Directory_ListFormsRequest"
+import type { HelloAsso_Api_V5_Models_Directory_ListOrganizationsRequest } from "../models/HelloAsso_Api_V5_Models_Directory_ListOrganizationsRequest"
 
-import type { CancelablePromise } from '../core/CancelablePromise';
-import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from "../core/CancelablePromise"
+import type { BaseHttpRequest } from "../core/BaseHttpRequest"
 
 export class DirectoryService {
-
 	constructor(public readonly httpRequest: BaseHttpRequest) {}
 
 	/**
@@ -30,24 +29,24 @@ export class DirectoryService {
 		body: HelloAsso_Api_V5_Models_Directory_ListFormsRequest,
 		pageSize: number = 20,
 		continuationToken?: string,
-		authorization?: string,
+		authorization?: string
 	): CancelablePromise<HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_SynchronizableFormModel> {
 		return this.httpRequest.request({
-			method: 'POST',
-			url: '/directory/forms',
+			method: "POST",
+			url: "/directory/forms",
 			headers: {
-				'Authorization': authorization,
+				Authorization: authorization
 			},
 			query: {
-				'pageSize': pageSize,
-				'continuationToken': continuationToken,
+				pageSize: pageSize,
+				continuationToken: continuationToken
 			},
 			body: body,
 			errors: {
 				401: `Unauthorized, you must add a valid JWT into Authorization Header with the format : \`Bearer TOKEN\``,
-				403: `The JWT token hasn't the privileges or Roles for this action`,
-			},
-		});
+				403: `The JWT token hasn't the privileges or Roles for this action`
+			}
+		})
 	}
 
 	/**
@@ -67,24 +66,23 @@ export class DirectoryService {
 		body: HelloAsso_Api_V5_Models_Directory_ListOrganizationsRequest,
 		pageSize: number = 20,
 		continuationToken?: string,
-		authorization?: string,
+		authorization?: string
 	): CancelablePromise<HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_SynchronizableOrganizationModel> {
 		return this.httpRequest.request({
-			method: 'POST',
-			url: '/directory/organizations',
+			method: "POST",
+			url: "/directory/organizations",
 			headers: {
-				'Authorization': authorization,
+				Authorization: authorization
 			},
 			query: {
-				'pageSize': pageSize,
-				'continuationToken': continuationToken,
+				pageSize: pageSize,
+				continuationToken: continuationToken
 			},
 			body: body,
 			errors: {
 				401: `Unauthorized, you must add a valid JWT into Authorization Header with the format : \`Bearer TOKEN\``,
-				403: `The JWT token hasn't the privileges or Roles for this action`,
-			},
-		});
+				403: `The JWT token hasn't the privileges or Roles for this action`
+			}
+		})
 	}
-
 }

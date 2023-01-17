@@ -14,12 +14,12 @@
  * * `Contested` - Payment has been contested by the contributor
  */
 export enum HelloAsso_Api_V5_Models_Enums_PaymentState {
-	PENDING = 'Pending',
-	AUTHORIZED = 'Authorized',
-	REFUSED = 'Refused',
-	UNKNOWN = 'Unknown',
-	REGISTERED = 'Registered',
-	REFUNDED = 'Refunded',
-	REFUNDING = 'Refunding',
-	CONTESTED = 'Contested',
+	PENDING = "Pending",
+	AUTHORIZED = "Authorized",
+	REFUSED = "Refused",
+	UNKNOWN = "Unknown",
+	REGISTERED = "Registered",
+	REFUNDED = "Refunded",
+	REFUNDING = "Refunding",
+	CONTESTED = "Contested"
 }

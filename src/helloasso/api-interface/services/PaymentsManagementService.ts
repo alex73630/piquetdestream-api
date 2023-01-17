@@ -1,14 +1,13 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Statistics_Payment } from '../models/HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Statistics_Payment';
-import type { HelloAsso_Api_V5_Models_Statistics_PaymentDetail } from '../models/HelloAsso_Api_V5_Models_Statistics_PaymentDetail';
+import type { HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Statistics_Payment } from "../models/HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Statistics_Payment"
+import type { HelloAsso_Api_V5_Models_Statistics_PaymentDetail } from "../models/HelloAsso_Api_V5_Models_Statistics_PaymentDetail"
 
-import type { CancelablePromise } from '../core/CancelablePromise';
-import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from "../core/CancelablePromise"
+import type { BaseHttpRequest } from "../core/BaseHttpRequest"
 
 export class PaymentsManagementService {
-
 	constructor(public readonly httpRequest: BaseHttpRequest) {}
 
 	/**
@@ -21,22 +20,22 @@ export class PaymentsManagementService {
 	 */
 	public paymentsGetPayment(
 		paymentId: number,
-		authorization?: string,
+		authorization?: string
 	): CancelablePromise<HelloAsso_Api_V5_Models_Statistics_PaymentDetail> {
 		return this.httpRequest.request({
-			method: 'GET',
-			url: '/payments/{paymentId}',
+			method: "GET",
+			url: "/payments/{paymentId}",
 			path: {
-				'paymentId': paymentId,
+				paymentId: paymentId
 			},
 			headers: {
-				'Authorization': authorization,
+				Authorization: authorization
 			},
 			errors: {
 				401: `Unauthorized, you must add a valid JWT into Authorization Header with the format : \`Bearer TOKEN\``,
-				403: `The JWT token hasn't the privileges or Roles for this action`,
-			},
-		});
+				403: `The JWT token hasn't the privileges or Roles for this action`
+			}
+		})
 	}
 
 	/**
@@ -72,7 +71,7 @@ export class PaymentsManagementService {
 	public paymentsGetFormPayments(
 		organizationSlug: string,
 		formSlug: string,
-		formType: 'CrowdFunding' | 'Membership' | 'Event' | 'Donation' | 'PaymentForm' | 'Checkout' | 'Shop',
+		formType: "CrowdFunding" | "Membership" | "Event" | "Donation" | "PaymentForm" | "Checkout" | "Shop",
 		from?: string,
 		to?: string,
 		userSearchKey?: string,
@@ -80,37 +79,37 @@ export class PaymentsManagementService {
 		pageSize: number = 20,
 		continuationToken?: string,
 		states?: Array<any>,
-		sortOrder: 'Asc' | 'Desc' = 'Desc',
-		sortField: 'Date' | 'UpdateDate' | 'CreationDate' = 'Date',
-		authorization?: string,
+		sortOrder: "Asc" | "Desc" = "Desc",
+		sortField: "Date" | "UpdateDate" | "CreationDate" = "Date",
+		authorization?: string
 	): CancelablePromise<HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Statistics_Payment> {
 		return this.httpRequest.request({
-			method: 'GET',
-			url: '/organizations/{organizationSlug}/forms/{formType}/{formSlug}/payments',
+			method: "GET",
+			url: "/organizations/{organizationSlug}/forms/{formType}/{formSlug}/payments",
 			path: {
-				'organizationSlug': organizationSlug,
-				'formSlug': formSlug,
-				'formType': formType,
+				organizationSlug: organizationSlug,
+				formSlug: formSlug,
+				formType: formType
 			},
 			headers: {
-				'Authorization': authorization,
+				Authorization: authorization
 			},
 			query: {
-				'from': from,
-				'to': to,
-				'userSearchKey': userSearchKey,
-				'pageIndex': pageIndex,
-				'pageSize': pageSize,
-				'continuationToken': continuationToken,
-				'states': states,
-				'sortOrder': sortOrder,
-				'sortField': sortField,
+				from: from,
+				to: to,
+				userSearchKey: userSearchKey,
+				pageIndex: pageIndex,
+				pageSize: pageSize,
+				continuationToken: continuationToken,
+				states: states,
+				sortOrder: sortOrder,
+				sortField: sortField
 			},
 			errors: {
 				401: `Unauthorized, you must add a valid JWT into Authorization Header with the format : \`Bearer TOKEN\``,
-				403: `The JWT token hasn't the privileges or Roles for this action`,
-			},
-		});
+				403: `The JWT token hasn't the privileges or Roles for this action`
+			}
+		})
 	}
 
 	/**
@@ -142,7 +141,7 @@ export class PaymentsManagementService {
 	 * @throws ApiError
 	 */
 	public paymentsGetOrganizationPayments(
-		organizationSlug: string = 'pour-le-bonheur-d-alexis',
+		organizationSlug: string = "pour-le-bonheur-d-alexis",
 		from?: string,
 		to?: string,
 		userSearchKey?: string,
@@ -150,35 +149,35 @@ export class PaymentsManagementService {
 		pageSize: number = 20,
 		continuationToken?: string,
 		states?: Array<any>,
-		sortOrder: 'Asc' | 'Desc' = 'Desc',
-		sortField: 'Date' | 'UpdateDate' | 'CreationDate' = 'Date',
-		authorization?: string,
+		sortOrder: "Asc" | "Desc" = "Desc",
+		sortField: "Date" | "UpdateDate" | "CreationDate" = "Date",
+		authorization?: string
 	): CancelablePromise<HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Statistics_Payment> {
 		return this.httpRequest.request({
-			method: 'GET',
-			url: '/organizations/{organizationSlug}/payments',
+			method: "GET",
+			url: "/organizations/{organizationSlug}/payments",
 			path: {
-				'organizationSlug': organizationSlug,
+				organizationSlug: organizationSlug
 			},
 			headers: {
-				'Authorization': authorization,
+				Authorization: authorization
 			},
 			query: {
-				'from': from,
-				'to': to,
-				'userSearchKey': userSearchKey,
-				'pageIndex': pageIndex,
-				'pageSize': pageSize,
-				'continuationToken': continuationToken,
-				'states': states,
-				'sortOrder': sortOrder,
-				'sortField': sortField,
+				from: from,
+				to: to,
+				userSearchKey: userSearchKey,
+				pageIndex: pageIndex,
+				pageSize: pageSize,
+				continuationToken: continuationToken,
+				states: states,
+				sortOrder: sortOrder,
+				sortField: sortField
 			},
 			errors: {
 				401: `Unauthorized, you must add a valid JWT into Authorization Header with the format : \`Bearer TOKEN\``,
-				403: `The JWT token hasn't the privileges or Roles for this action`,
-			},
-		});
+				403: `The JWT token hasn't the privileges or Roles for this action`
+			}
+		})
 	}
 
 	/**
@@ -197,27 +196,26 @@ export class PaymentsManagementService {
 		comment?: string,
 		refundOrder: boolean = false,
 		sendRefundMail: boolean = true,
-		authorization?: string,
+		authorization?: string
 	): CancelablePromise<any> {
 		return this.httpRequest.request({
-			method: 'POST',
-			url: '/payments/{paymentId}/refund',
+			method: "POST",
+			url: "/payments/{paymentId}/refund",
 			path: {
-				'paymentId': paymentId,
+				paymentId: paymentId
 			},
 			headers: {
-				'Authorization': authorization,
+				Authorization: authorization
 			},
 			query: {
-				'comment': comment,
-				'refundOrder': refundOrder,
-				'sendRefundMail': sendRefundMail,
+				comment: comment,
+				refundOrder: refundOrder,
+				sendRefundMail: sendRefundMail
 			},
 			errors: {
 				401: `Unauthorized, you must add a valid JWT into Authorization Header with the format : \`Bearer TOKEN\``,
-				403: `The JWT token hasn't the privileges or Roles for this action`,
-			},
-		});
+				403: `The JWT token hasn't the privileges or Roles for this action`
+			}
+		})
 	}
-
 }

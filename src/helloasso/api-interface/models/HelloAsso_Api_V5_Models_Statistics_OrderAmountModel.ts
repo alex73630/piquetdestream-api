@@ -6,14 +6,13 @@ export type HelloAsso_Api_V5_Models_Statistics_OrderAmountModel = {
 	/**
 	 * Total amount in cents
 	 */
-	total?: number;
+	total?: number
 	/**
 	 * Vat amount in cents
 	 */
-	vat?: number;
+	vat?: number
 	/**
 	 * Discount amount in cents
 	 */
-	discount?: number;
-};
-
+	discount?: number
+}

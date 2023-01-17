@@ -9,8 +9,8 @@
  * * `Disabled` - The form is disabled and can be reenabled by changing state to public or private
  */
 export enum HelloAsso_Api_V5_Models_Enums_FormState {
-	PUBLIC = 'Public',
-	PRIVATE = 'Private',
-	DRAFT = 'Draft',
-	DISABLED = 'Disabled',
+	PUBLIC = "Public",
+	PRIVATE = "Private",
+	DRAFT = "Draft",
+	DISABLED = "Disabled"
 }

@@ -2,125 +2,124 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { HelloAsso_Api_V5_Models_Enums_FormType } from './HelloAsso_Api_V5_Models_Enums_FormType';
+import type { HelloAsso_Api_V5_Models_Enums_FormType } from "./HelloAsso_Api_V5_Models_Enums_FormType"
 
 export type HelloAsso_Api_V5_Models_Directory_ListFormsRequest = {
 	/**
 	 * Textual search for form name
 	 */
-	formName?: string;
+	formName?: string
 	/**
 	 * Textual search for form description
 	 */
-	formDescription?: string;
+	formDescription?: string
 	/**
 	 * The zip codes where the forms are located
 	 */
-	formZipCodes?: Array<string>;
+	formZipCodes?: Array<string>
 	/**
 	 * The cities where the forms are located
 	 */
-	formCities?: Array<string>;
+	formCities?: Array<string>
 	/**
 	 * The regions where the forms are located
 	 */
-	formRegions?: Array<string>;
+	formRegions?: Array<string>
 	/**
 	 * The departments where the forms are located
 	 */
-	formDepartments?: Array<string>;
+	formDepartments?: Array<string>
 	/**
 	 * The countries where the forms are located
 	 */
-	formCountries?: Array<string>;
+	formCountries?: Array<string>
 	/**
 	 * The form types : CrowdFunding, Membership, Event, Donation, PaymentForm ...
 	 */
-	formTypes?: Array<HelloAsso_Api_V5_Models_Enums_FormType>;
+	formTypes?: Array<HelloAsso_Api_V5_Models_Enums_FormType>
 	/**
 	 * The Activity Type of the form
 	 */
-	formActivityType?: Array<string>;
+	formActivityType?: Array<string>
 	/**
 	 * The minimum publication date of the forms, format "yyyy-MM-ddTHH:mm:ss.fffK"
 	 */
-	formPublicationStartDateMin?: string;
+	formPublicationStartDateMin?: string
 	/**
 	 * The maximum publication date of the forms, format "yyyy-MM-ddTHH:mm:ss.fffK"
 	 */
-	formPublicationStartDateMax?: string;
+	formPublicationStartDateMax?: string
 	/**
 	 * The minimum start date of the forms, format "yyyy-MM-ddTHH:mm:ss.fffK"
 	 */
-	formStartDateMin?: string;
+	formStartDateMin?: string
 	/**
 	 * The maximum start date of the forms, format "yyyy-MM-ddTHH:mm:ss.fffK"
 	 */
-	formStartDateMax?: string;
+	formStartDateMax?: string
 	/**
 	 * The maximum end date of the forms, format "yyyy-MM-ddTHH:mm:ss.fffK"
 	 */
-	formEndDateMax?: string;
+	formEndDateMax?: string
 	/**
 	 * The minimum end date of the forms, format "yyyy-MM-ddTHH:mm:ss.fffK"
 	 */
-	formEndDateMin?: string;
+	formEndDateMin?: string
 	/**
 	 * Allow only free forms if true
 	 */
-	formIsFree?: boolean;
+	formIsFree?: boolean
 	/**
 	 * Allow only forms with remaning entries if true
 	 */
-	formHasRemainingEntries?: boolean;
+	formHasRemainingEntries?: boolean
 	/**
 	 * Allow only forms with internal tags
 	 * this filter is for special operations only
 	 */
-	formInternalTags?: Array<string>;
+	formInternalTags?: Array<string>
 	/**
 	 * Allow only forms with public tags
 	 */
-	formPublicTags?: Array<string>;
+	formPublicTags?: Array<string>
 	/**
 	 * Textual search for organization name
 	 */
-	organizationName?: string;
+	organizationName?: string
 	/**
 	 * Textual search for organization description
 	 */
-	organizationDescription?: string;
+	organizationDescription?: string
 	/**
 	 * The categories of the forms
 	 */
-	organizationCategories?: Array<string>;
+	organizationCategories?: Array<string>
 	/**
 	 * The organization types
 	 */
-	organizationTypes?: Array<string>;
+	organizationTypes?: Array<string>
 	/**
 	 * The zip codes where the organizations are located
 	 */
-	organizationZipCodes?: Array<string>;
+	organizationZipCodes?: Array<string>
 	/**
 	 * The cities where the organizations are located
 	 */
-	organizationCities?: Array<string>;
+	organizationCities?: Array<string>
 	/**
 	 * The regions where the organizations are located
 	 */
-	organizationRegions?: Array<string>;
+	organizationRegions?: Array<string>
 	/**
 	 * The departments where the organizations are located
 	 */
-	organizationDepartments?: Array<string>;
+	organizationDepartments?: Array<string>
 	/**
 	 * Allow only organization with a fiscal receipt eligibility
 	 */
-	organizationFiscalReceiptEligibility?: boolean;
+	organizationFiscalReceiptEligibility?: boolean
 	/**
 	 * Organization linked partners
 	 */
-	organizationLinkedPartners?: Array<string>;
-};
-
+	organizationLinkedPartners?: Array<string>
+}

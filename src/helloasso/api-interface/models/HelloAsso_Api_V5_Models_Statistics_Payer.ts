@@ -3,32 +3,31 @@
 /* eslint-disable */
 
 export type HelloAsso_Api_V5_Models_Statistics_Payer = {
-	email?: string;
+	email?: string
 	/**
 	 * Gets or Sets Address
 	 */
-	address?: string;
+	address?: string
 	/**
 	 * Gets or Sets City
 	 */
-	city?: string;
+	city?: string
 	/**
 	 * Gets or Sets ZipCode
 	 */
-	zipCode?: string;
+	zipCode?: string
 	/**
 	 * Gets or Sets Country
 	 */
-	country?: string;
+	country?: string
 	/**
 	 * Gets or Sets Company
 	 */
-	company?: string;
+	company?: string
 	/**
 	 * Gets or Sets date of birth
 	 */
-	dateOfBirth?: string;
-	firstName?: string;
-	lastName?: string;
-};
-
+	dateOfBirth?: string
+	firstName?: string
+	lastName?: string
+}

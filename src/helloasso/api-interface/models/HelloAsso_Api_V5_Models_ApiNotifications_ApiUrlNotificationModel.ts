@@ -9,6 +9,5 @@ export type HelloAsso_Api_V5_Models_ApiNotifications_ApiUrlNotificationModel = {
 	/**
 	 * The notification Url
 	 */
-	url?: string;
-};
-
+	url?: string
+}

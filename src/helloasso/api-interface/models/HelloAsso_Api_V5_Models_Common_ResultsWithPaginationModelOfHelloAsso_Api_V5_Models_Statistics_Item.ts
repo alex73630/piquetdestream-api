@@ -2,8 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { HelloAsso_Api_V5_Models_Common_PaginationModel } from './HelloAsso_Api_V5_Models_Common_PaginationModel';
-import type { HelloAsso_Api_V5_Models_Statistics_Item } from './HelloAsso_Api_V5_Models_Statistics_Item';
+import type { HelloAsso_Api_V5_Models_Common_PaginationModel } from "./HelloAsso_Api_V5_Models_Common_PaginationModel"
+import type { HelloAsso_Api_V5_Models_Statistics_Item } from "./HelloAsso_Api_V5_Models_Statistics_Item"
 
 /**
  * ResultsWithPaginationModel class
@@ -12,10 +12,9 @@ export type HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso
 	/**
 	 * Data property
 	 */
-	data?: Array<HelloAsso_Api_V5_Models_Statistics_Item>;
+	data?: Array<HelloAsso_Api_V5_Models_Statistics_Item>
 	/**
 	 * Pagination info
 	 */
-	pagination?: HelloAsso_Api_V5_Models_Common_PaginationModel;
-};
-
+	pagination?: HelloAsso_Api_V5_Models_Common_PaginationModel
+}

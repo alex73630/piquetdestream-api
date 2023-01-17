@@ -9,8 +9,8 @@
  * * `Canceled` - The item has been canceled, and is no longer valid
  */
 export enum HelloAsso_Api_V5_Models_Enums_ItemState {
-	PROCESSED = 'Processed',
-	REGISTERED = 'Registered',
-	UNKNOWN = 'Unknown',
-	CANCELED = 'Canceled',
+	PROCESSED = "Processed",
+	REGISTERED = "Registered",
+	UNKNOWN = "Unknown",
+	CANCELED = "Canceled"
 }

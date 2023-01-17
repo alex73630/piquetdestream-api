@@ -2,10 +2,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { HelloAsso_Api_V5_Models_Common_DocumentModel } from './HelloAsso_Api_V5_Models_Common_DocumentModel';
-import type { HelloAsso_Api_V5_Models_Common_MetaModel } from './HelloAsso_Api_V5_Models_Common_MetaModel';
-import type { HelloAsso_Api_V5_Models_Enums_FormState } from './HelloAsso_Api_V5_Models_Enums_FormState';
-import type { HelloAsso_Api_V5_Models_Enums_FormType } from './HelloAsso_Api_V5_Models_Enums_FormType';
+import type { HelloAsso_Api_V5_Models_Common_DocumentModel } from "./HelloAsso_Api_V5_Models_Common_DocumentModel"
+import type { HelloAsso_Api_V5_Models_Common_MetaModel } from "./HelloAsso_Api_V5_Models_Common_MetaModel"
+import type { HelloAsso_Api_V5_Models_Enums_FormState } from "./HelloAsso_Api_V5_Models_Enums_FormState"
+import type { HelloAsso_Api_V5_Models_Enums_FormType } from "./HelloAsso_Api_V5_Models_Enums_FormType"
 
 /**
  * FormLightModel class
@@ -14,78 +14,77 @@ export type HelloAsso_Api_V5_Models_Forms_FormLightModel = {
 	/**
 	 * Banner
 	 */
-	banner?: HelloAsso_Api_V5_Models_Common_DocumentModel;
+	banner?: HelloAsso_Api_V5_Models_Common_DocumentModel
 	/**
 	 * Currency
 	 */
-	currency?: string;
+	currency?: string
 	/**
 	 * Short description (one line)
 	 */
-	description?: string;
+	description?: string
 	/**
 	 * The datetime of the activity start
 	 */
-	startDate?: string;
+	startDate?: string
 	/**
 	 * The datetime of the activity end
 	 */
-	endDate?: string;
+	endDate?: string
 	/**
 	 * Logo
 	 */
-	logo?: HelloAsso_Api_V5_Models_Common_DocumentModel;
+	logo?: HelloAsso_Api_V5_Models_Common_DocumentModel
 	/**
 	 * Meta
 	 */
-	meta?: HelloAsso_Api_V5_Models_Common_MetaModel;
+	meta?: HelloAsso_Api_V5_Models_Common_MetaModel
 	/**
 	 * State
 	 */
-	state?: HelloAsso_Api_V5_Models_Enums_FormState;
+	state?: HelloAsso_Api_V5_Models_Enums_FormState
 	/**
 	 * Title
 	 */
-	title?: string;
+	title?: string
 	/**
 	 * Private Title
 	 */
-	privateTitle?: string;
+	privateTitle?: string
 	/**
 	 * Url of the widget button
 	 */
-	widgetButtonUrl?: string;
+	widgetButtonUrl?: string
 	/**
 	 * Url of the form widget
 	 */
-	widgetFullUrl?: string;
+	widgetFullUrl?: string
 	/**
 	 * Url of the horizontal vignette widget
 	 */
-	widgetVignetteHorizontalUrl?: string;
+	widgetVignetteHorizontalUrl?: string
 	/**
 	 * Url of the vertical vignette widget
 	 */
-	widgetVignetteVerticalUrl?: string;
+	widgetVignetteVerticalUrl?: string
 	/**
 	 * Url of the counter widget
 	 */
-	widgetCounterUrl?: string;
+	widgetCounterUrl?: string
 	/**
 	 * The form slug
 	 */
-	formSlug?: string;
+	formSlug?: string
 	/**
 	 * The form type
 	 */
-	formType?: HelloAsso_Api_V5_Models_Enums_FormType;
+	formType?: HelloAsso_Api_V5_Models_Enums_FormType
 	/**
 	 * The form url
 	 */
-	url?: string;
+	url?: string
 	/**
 	 * The organization slug
 	 */
-	organizationSlug?: string;
-};
-
+	organizationSlug?: string
+}

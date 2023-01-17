@@ -2,9 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { HelloAsso_Api_V5_Models_Enums_OrganizationType } from './HelloAsso_Api_V5_Models_Enums_OrganizationType';
-import type { HelloAsso_Models_Enums_GlobalRole } from './HelloAsso_Models_Enums_GlobalRole';
-import type { HelloAsso_Models_Shared_GeoLocation } from './HelloAsso_Models_Shared_GeoLocation';
+import type { HelloAsso_Api_V5_Models_Enums_OrganizationType } from "./HelloAsso_Api_V5_Models_Enums_OrganizationType"
+import type { HelloAsso_Models_Enums_GlobalRole } from "./HelloAsso_Models_Enums_GlobalRole"
+import type { HelloAsso_Models_Shared_GeoLocation } from "./HelloAsso_Models_Shared_GeoLocation"
 
 /**
  * OrganizationsModel class
@@ -13,67 +13,66 @@ export type HelloAsso_Api_V5_Models_Organization_OrganizationModel = {
 	/**
 	 * The organization is authenticated. Property returned only when asked by an organization admin.
 	 */
-	isAuthenticated?: boolean;
+	isAuthenticated?: boolean
 	/**
 	 * The organization banner
 	 */
-	banner?: string;
+	banner?: string
 	/**
 	 * The organism can issue fiscal receipts (type ok and has not deactivated it)
 	 * Must configure it and be authenticated to become enabled
 	 */
-	fiscalReceiptEligibility?: boolean;
+	fiscalReceiptEligibility?: boolean
 	/**
 	 * The organism is eligible, has set up his options, and is authenticated.
 	 */
-	fiscalReceiptIssuanceEnabled?: boolean;
+	fiscalReceiptIssuanceEnabled?: boolean
 	/**
 	 * The organization type
 	 */
-	type?: HelloAsso_Api_V5_Models_Enums_OrganizationType;
+	type?: HelloAsso_Api_V5_Models_Enums_OrganizationType
 	/**
 	 * Organization category label
 	 */
-	category?: string;
+	category?: string
 	/**
 	 * Organization Address (for authorized applications or if authorized by the organization)
 	 */
-	address?: string;
+	address?: string
 	/**
 	 * Organization Geolocation (for authorized applications or if authorized by the organization)
 	 */
-	geolocation?: HelloAsso_Models_Shared_GeoLocation;
+	geolocation?: HelloAsso_Models_Shared_GeoLocation
 	/**
 	 * Logo of organization
 	 */
-	logo?: string;
+	logo?: string
 	/**
 	 * Name of organization
 	 */
-	name?: string;
+	name?: string
 	/**
 	 * Organization Role
 	 */
-	role?: HelloAsso_Models_Enums_GlobalRole;
+	role?: HelloAsso_Models_Enums_GlobalRole
 	/**
 	 * Organization city
 	 */
-	city?: string;
+	city?: string
 	/**
 	 * Organization zip code
 	 */
-	zipCode?: string;
+	zipCode?: string
 	/**
 	 * Organization description
 	 */
-	description?: string;
+	description?: string
 	/**
 	 * The organization url
 	 */
-	url?: string;
+	url?: string
 	/**
 	 * The organization slug
 	 */
-	organizationSlug?: string;
-};
-
+	organizationSlug?: string
+}

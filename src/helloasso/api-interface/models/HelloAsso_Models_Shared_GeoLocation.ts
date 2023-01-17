@@ -3,7 +3,6 @@
 /* eslint-disable */
 
 export type HelloAsso_Models_Shared_GeoLocation = {
-	readonly latitude?: number;
-	readonly longitude?: number;
-};
-
+	readonly latitude?: number
+	readonly longitude?: number
+}

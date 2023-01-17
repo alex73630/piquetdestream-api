@@ -9,10 +9,9 @@ export type HelloAsso_Api_V5_Models_Common_MetaModel = {
 	/**
 	 * CreatedAt
 	 */
-	createdAt?: string;
+	createdAt?: string
 	/**
 	 * UpdateAt
 	 */
-	updatedAt?: string;
-};
-
+	updatedAt?: string
+}

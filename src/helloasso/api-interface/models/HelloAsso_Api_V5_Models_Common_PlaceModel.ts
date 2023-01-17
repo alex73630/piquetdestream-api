@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { HelloAsso_Models_Shared_GeoLocation } from './HelloAsso_Models_Shared_GeoLocation';
+import type { HelloAsso_Models_Shared_GeoLocation } from "./HelloAsso_Models_Shared_GeoLocation"
 
 /**
  * PlaceModel class
@@ -11,26 +11,25 @@ export type HelloAsso_Api_V5_Models_Common_PlaceModel = {
 	/**
 	 * Address
 	 */
-	address?: string;
+	address?: string
 	/**
 	 * Name of the place
 	 */
-	name?: string;
+	name?: string
 	/**
 	 * City
 	 */
-	city?: string;
+	city?: string
 	/**
 	 * ZipCode
 	 */
-	zipCode?: string;
+	zipCode?: string
 	/**
 	 * 3 letter country code
 	 */
-	country?: string;
+	country?: string
 	/**
 	 * Geolocation (latitude and longitude), filled on directory routes
 	 */
-	geoLocation?: HelloAsso_Models_Shared_GeoLocation;
-};
-
+	geoLocation?: HelloAsso_Models_Shared_GeoLocation
+}

@@ -2,88 +2,87 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { HelloAsso_Api_V5_Models_Enums_ItemState } from './HelloAsso_Api_V5_Models_Enums_ItemState';
-import type { HelloAsso_Api_V5_Models_Enums_PriceCategory } from './HelloAsso_Api_V5_Models_Enums_PriceCategory';
-import type { HelloAsso_Api_V5_Models_Enums_TierType } from './HelloAsso_Api_V5_Models_Enums_TierType';
-import type { HelloAsso_Api_V5_Models_Statistics_ItemCustomField } from './HelloAsso_Api_V5_Models_Statistics_ItemCustomField';
-import type { HelloAsso_Api_V5_Models_Statistics_ItemDiscount } from './HelloAsso_Api_V5_Models_Statistics_ItemDiscount';
-import type { HelloAsso_Api_V5_Models_Statistics_ItemOption } from './HelloAsso_Api_V5_Models_Statistics_ItemOption';
-import type { HelloAsso_Api_V5_Models_Statistics_ItemPayment } from './HelloAsso_Api_V5_Models_Statistics_ItemPayment';
-import type { HelloAsso_Api_V5_Models_Statistics_OrderLight } from './HelloAsso_Api_V5_Models_Statistics_OrderLight';
-import type { HelloAsso_Api_V5_Models_Statistics_Payer } from './HelloAsso_Api_V5_Models_Statistics_Payer';
-import type { HelloAsso_Api_V5_Models_Statistics_User } from './HelloAsso_Api_V5_Models_Statistics_User';
+import type { HelloAsso_Api_V5_Models_Enums_ItemState } from "./HelloAsso_Api_V5_Models_Enums_ItemState"
+import type { HelloAsso_Api_V5_Models_Enums_PriceCategory } from "./HelloAsso_Api_V5_Models_Enums_PriceCategory"
+import type { HelloAsso_Api_V5_Models_Enums_TierType } from "./HelloAsso_Api_V5_Models_Enums_TierType"
+import type { HelloAsso_Api_V5_Models_Statistics_ItemCustomField } from "./HelloAsso_Api_V5_Models_Statistics_ItemCustomField"
+import type { HelloAsso_Api_V5_Models_Statistics_ItemDiscount } from "./HelloAsso_Api_V5_Models_Statistics_ItemDiscount"
+import type { HelloAsso_Api_V5_Models_Statistics_ItemOption } from "./HelloAsso_Api_V5_Models_Statistics_ItemOption"
+import type { HelloAsso_Api_V5_Models_Statistics_ItemPayment } from "./HelloAsso_Api_V5_Models_Statistics_ItemPayment"
+import type { HelloAsso_Api_V5_Models_Statistics_OrderLight } from "./HelloAsso_Api_V5_Models_Statistics_OrderLight"
+import type { HelloAsso_Api_V5_Models_Statistics_Payer } from "./HelloAsso_Api_V5_Models_Statistics_Payer"
+import type { HelloAsso_Api_V5_Models_Statistics_User } from "./HelloAsso_Api_V5_Models_Statistics_User"
 
 export type HelloAsso_Api_V5_Models_Statistics_ItemDetail = {
-	order?: HelloAsso_Api_V5_Models_Statistics_OrderLight;
-	payer?: HelloAsso_Api_V5_Models_Statistics_Payer;
+	order?: HelloAsso_Api_V5_Models_Statistics_OrderLight
+	payer?: HelloAsso_Api_V5_Models_Statistics_Payer
 	/**
 	 * Payments linked to this item
 	 */
-	payments?: Array<HelloAsso_Api_V5_Models_Statistics_ItemPayment>;
-	name?: string;
+	payments?: Array<HelloAsso_Api_V5_Models_Statistics_ItemPayment>
+	name?: string
 	/**
 	 * User : participant/member/adherent specified on the item
 	 */
-	user?: HelloAsso_Api_V5_Models_Statistics_User;
+	user?: HelloAsso_Api_V5_Models_Statistics_User
 	/**
 	 * PriceCategory : Free, Fixed or Pay what you want
 	 */
-	priceCategory?: HelloAsso_Api_V5_Models_Enums_PriceCategory;
+	priceCategory?: HelloAsso_Api_V5_Models_Enums_PriceCategory
 	/**
 	 * Minimum amount that was specified on the tier (in cents)
 	 */
-	minAmount?: number;
+	minAmount?: number
 	/**
 	 * The discount code used on the item
 	 */
-	discount?: HelloAsso_Api_V5_Models_Statistics_ItemDiscount;
+	discount?: HelloAsso_Api_V5_Models_Statistics_ItemDiscount
 	/**
 	 * Custom fields related to this item
 	 */
-	customFields?: Array<HelloAsso_Api_V5_Models_Statistics_ItemCustomField>;
+	customFields?: Array<HelloAsso_Api_V5_Models_Statistics_ItemCustomField>
 	/**
 	 * Extra options taken with this item
 	 */
-	options?: Array<HelloAsso_Api_V5_Models_Statistics_ItemOption>;
+	options?: Array<HelloAsso_Api_V5_Models_Statistics_ItemOption>
 	/**
 	 * The Ticket Url
 	 */
-	ticketUrl?: string;
+	ticketUrl?: string
 	/**
 	 * The item QrCode (for ticket scanning only)
 	 */
-	qrCode?: string;
+	qrCode?: string
 	/**
 	 * The Membership Card Url
 	 */
-	membershipCardUrl?: string;
+	membershipCardUrl?: string
 	/**
 	 * The day of levy for monthly donation only
 	 */
-	dayOfLevy?: number;
+	dayOfLevy?: number
 	/**
 	 * Tier description
 	 */
-	tierDescription?: string;
+	tierDescription?: string
 	/**
 	 * ID of the Item
 	 */
-	id?: number;
+	id?: number
 	/**
 	 * Total item Price in cents (after discount without extra options)
 	 */
-	amount?: number;
+	amount?: number
 	/**
 	 * Type of the used tariff
 	 */
-	type?: HelloAsso_Api_V5_Models_Enums_TierType;
+	type?: HelloAsso_Api_V5_Models_Enums_TierType
 	/**
 	 * The raw amount (without reduction)
 	 */
-	initialAmount?: number;
+	initialAmount?: number
 	/**
 	 * State of this item
 	 */
-	state?: HelloAsso_Api_V5_Models_Enums_ItemState;
-};
-
+	state?: HelloAsso_Api_V5_Models_Enums_ItemState
+}

@@ -1,15 +1,14 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { HelloAsso_Api_V5_Models_Carts_CheckoutIntentResponse } from '../models/HelloAsso_Api_V5_Models_Carts_CheckoutIntentResponse';
-import type { HelloAsso_Api_V5_Models_Carts_InitCheckoutBody } from '../models/HelloAsso_Api_V5_Models_Carts_InitCheckoutBody';
-import type { HelloAsso_Api_V5_Models_Carts_InitCheckoutResponse } from '../models/HelloAsso_Api_V5_Models_Carts_InitCheckoutResponse';
+import type { HelloAsso_Api_V5_Models_Carts_CheckoutIntentResponse } from "../models/HelloAsso_Api_V5_Models_Carts_CheckoutIntentResponse"
+import type { HelloAsso_Api_V5_Models_Carts_InitCheckoutBody } from "../models/HelloAsso_Api_V5_Models_Carts_InitCheckoutBody"
+import type { HelloAsso_Api_V5_Models_Carts_InitCheckoutResponse } from "../models/HelloAsso_Api_V5_Models_Carts_InitCheckoutResponse"
 
-import type { CancelablePromise } from '../core/CancelablePromise';
-import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from "../core/CancelablePromise"
+import type { BaseHttpRequest } from "../core/BaseHttpRequest"
 
 export class CheckoutIntentsManagementService {
-
 	constructor(public readonly httpRequest: BaseHttpRequest) {}
 
 	/**
@@ -24,23 +23,23 @@ export class CheckoutIntentsManagementService {
 	public organizationCheckoutIntentsGetCheckoutIntent(
 		organizationSlug: string,
 		checkoutIntentId: number,
-		authorization?: string,
+		authorization?: string
 	): CancelablePromise<HelloAsso_Api_V5_Models_Carts_CheckoutIntentResponse> {
 		return this.httpRequest.request({
-			method: 'GET',
-			url: '/organizations/{organizationSlug}/checkout-intents/{checkoutIntentId}',
+			method: "GET",
+			url: "/organizations/{organizationSlug}/checkout-intents/{checkoutIntentId}",
 			path: {
-				'organizationSlug': organizationSlug,
-				'checkoutIntentId': checkoutIntentId,
+				organizationSlug: organizationSlug,
+				checkoutIntentId: checkoutIntentId
 			},
 			headers: {
-				'Authorization': authorization,
+				Authorization: authorization
 			},
 			errors: {
 				401: `Unauthorized, you must add a valid JWT into Authorization Header with the format : \`Bearer TOKEN\``,
-				403: `The JWT token hasn't the privileges or Roles for this action`,
-			},
-		});
+				403: `The JWT token hasn't the privileges or Roles for this action`
+			}
+		})
 	}
 
 	/**
@@ -55,23 +54,22 @@ export class CheckoutIntentsManagementService {
 	public organizationCheckoutIntentsPostInitCheckout(
 		organizationSlug: string,
 		body: HelloAsso_Api_V5_Models_Carts_InitCheckoutBody,
-		authorization?: string,
+		authorization?: string
 	): CancelablePromise<HelloAsso_Api_V5_Models_Carts_InitCheckoutResponse> {
 		return this.httpRequest.request({
-			method: 'POST',
-			url: '/organizations/{organizationSlug}/checkout-intents',
+			method: "POST",
+			url: "/organizations/{organizationSlug}/checkout-intents",
 			path: {
-				'organizationSlug': organizationSlug,
+				organizationSlug: organizationSlug
 			},
 			headers: {
-				'Authorization': authorization,
+				Authorization: authorization
 			},
 			body: body,
 			errors: {
 				401: `Unauthorized, you must add a valid JWT into Authorization Header with the format : \`Bearer TOKEN\``,
-				403: `The JWT token hasn't the privileges or Roles for this action`,
-			},
-		});
+				403: `The JWT token hasn't the privileges or Roles for this action`
+			}
+		})
 	}
-
 }

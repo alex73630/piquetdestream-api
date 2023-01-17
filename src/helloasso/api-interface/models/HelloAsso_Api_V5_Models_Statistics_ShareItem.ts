@@ -6,18 +6,17 @@ export type HelloAsso_Api_V5_Models_Statistics_ShareItem = {
 	/**
 	 * Id of the order item
 	 */
-	id?: number;
+	id?: number
 	/**
 	 * Amount of the payment assigned to the item and its options (in cents)
 	 */
-	shareAmount?: number;
+	shareAmount?: number
 	/**
 	 * Amount of the item payed on this payment term (in cents)
 	 */
-	shareItemAmount?: number;
+	shareItemAmount?: number
 	/**
 	 * Amount of all extra options linked to this item and payed on this payment (in cents)
 	 */
-	shareOptionsAmount?: number;
-};
-
+	shareOptionsAmount?: number
+}

@@ -9,10 +9,9 @@ export type HelloAsso_Api_V5_Models_Organization_OrganizationBasicModel = {
 	/**
 	 * The organization url
 	 */
-	url?: string;
+	url?: string
 	/**
 	 * The organization slug
 	 */
-	organizationSlug?: string;
-};
-
+	organizationSlug?: string
+}

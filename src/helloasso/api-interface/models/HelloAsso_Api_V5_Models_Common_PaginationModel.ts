@@ -9,22 +9,21 @@ export type HelloAsso_Api_V5_Models_Common_PaginationModel = {
 	/**
 	 * Page size
 	 */
-	pageSize?: number;
+	pageSize?: number
 	/**
 	 * Total number of results available
 	 */
-	totalCount?: number;
+	totalCount?: number
 	/**
 	 * Current page index
 	 */
-	pageIndex?: number;
+	pageIndex?: number
 	/**
 	 * Total number of pages of results with current page size
 	 */
-	totalPages?: number;
+	totalPages?: number
 	/**
 	 * Continuation Token to get next results
 	 */
-	continuationToken?: string;
-};
-
+	continuationToken?: string
+}

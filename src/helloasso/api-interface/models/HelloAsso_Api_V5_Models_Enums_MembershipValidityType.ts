@@ -9,7 +9,7 @@
  * * `Illimited` - Illimited : no end to validity
  */
 export enum HelloAsso_Api_V5_Models_Enums_MembershipValidityType {
-	MOVING_YEAR = 'MovingYear',
-	CUSTOM = 'Custom',
-	ILLIMITED = 'Illimited',
+	MOVING_YEAR = "MovingYear",
+	CUSTOM = "Custom",
+	ILLIMITED = "Illimited"
 }

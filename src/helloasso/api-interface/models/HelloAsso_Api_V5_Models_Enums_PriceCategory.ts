@@ -8,7 +8,7 @@
  * * `Free`
  */
 export enum HelloAsso_Api_V5_Models_Enums_PriceCategory {
-	FIXED = 'Fixed',
-	PWYW = 'Pwyw',
-	FREE = 'Free',
+	FIXED = "Fixed",
+	PWYW = "Pwyw",
+	FREE = "Free"
 }

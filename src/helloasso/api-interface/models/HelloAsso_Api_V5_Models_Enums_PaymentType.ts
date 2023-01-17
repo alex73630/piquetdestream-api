@@ -8,7 +8,7 @@
  * * `Debit` - Payment for balance adjustment
  */
 export enum HelloAsso_Api_V5_Models_Enums_PaymentType {
-	OFFLINE = 'Offline',
-	CREDIT = 'Credit',
-	DEBIT = 'Debit',
+	OFFLINE = "Offline",
+	CREDIT = "Credit",
+	DEBIT = "Debit"
 }

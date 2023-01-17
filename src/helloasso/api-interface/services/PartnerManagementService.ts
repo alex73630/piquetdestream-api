@@ -1,17 +1,16 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { HelloAsso_Api_V5_Models_Accounts_ApiClients_ApiClientModel } from '../models/HelloAsso_Api_V5_Models_Accounts_ApiClients_ApiClientModel';
-import type { HelloAsso_Api_V5_Models_Accounts_ApiClients_PublicPutPartnerApiClientRequest } from '../models/HelloAsso_Api_V5_Models_Accounts_ApiClients_PublicPutPartnerApiClientRequest';
-import type { HelloAsso_Api_V5_Models_ApiNotifications_PostApiUrlNotificationBody } from '../models/HelloAsso_Api_V5_Models_ApiNotifications_PostApiUrlNotificationBody';
-import type { HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_PartnerOrganizationModel } from '../models/HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_PartnerOrganizationModel';
-import type { HelloAsso_Api_V5_Models_Partners_PartnerPublicModel } from '../models/HelloAsso_Api_V5_Models_Partners_PartnerPublicModel';
+import type { HelloAsso_Api_V5_Models_Accounts_ApiClients_ApiClientModel } from "../models/HelloAsso_Api_V5_Models_Accounts_ApiClients_ApiClientModel"
+import type { HelloAsso_Api_V5_Models_Accounts_ApiClients_PublicPutPartnerApiClientRequest } from "../models/HelloAsso_Api_V5_Models_Accounts_ApiClients_PublicPutPartnerApiClientRequest"
+import type { HelloAsso_Api_V5_Models_ApiNotifications_PostApiUrlNotificationBody } from "../models/HelloAsso_Api_V5_Models_ApiNotifications_PostApiUrlNotificationBody"
+import type { HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_PartnerOrganizationModel } from "../models/HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_PartnerOrganizationModel"
+import type { HelloAsso_Api_V5_Models_Partners_PartnerPublicModel } from "../models/HelloAsso_Api_V5_Models_Partners_PartnerPublicModel"
 
-import type { CancelablePromise } from '../core/CancelablePromise';
-import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from "../core/CancelablePromise"
+import type { BaseHttpRequest } from "../core/BaseHttpRequest"
 
 export class PartnerManagementService {
-
 	constructor(public readonly httpRequest: BaseHttpRequest) {}
 
 	/**
@@ -24,20 +23,20 @@ export class PartnerManagementService {
 	 */
 	public partnersPutPartnerDomain(
 		body: HelloAsso_Api_V5_Models_Accounts_ApiClients_PublicPutPartnerApiClientRequest,
-		authorization?: string,
+		authorization?: string
 	): CancelablePromise<HelloAsso_Api_V5_Models_Accounts_ApiClients_ApiClientModel> {
 		return this.httpRequest.request({
-			method: 'PUT',
-			url: '/partners/me/api-clients',
+			method: "PUT",
+			url: "/partners/me/api-clients",
 			headers: {
-				'Authorization': authorization,
+				Authorization: authorization
 			},
 			body: body,
 			errors: {
 				401: `Unauthorized, you must add a valid JWT into Authorization Header with the format : \`Bearer TOKEN\``,
-				403: `The JWT token hasn't the privileges or Roles for this action`,
-			},
-		});
+				403: `The JWT token hasn't the privileges or Roles for this action`
+			}
+		})
 	}
 
 	/**
@@ -50,20 +49,20 @@ export class PartnerManagementService {
 	 */
 	public partnersPutPartnerUrlNotification(
 		body: HelloAsso_Api_V5_Models_ApiNotifications_PostApiUrlNotificationBody,
-		authorization?: string,
+		authorization?: string
 	): CancelablePromise<any> {
 		return this.httpRequest.request({
-			method: 'PUT',
-			url: '/partners/me/api-notifications',
+			method: "PUT",
+			url: "/partners/me/api-notifications",
 			headers: {
-				'Authorization': authorization,
+				Authorization: authorization
 			},
 			body: body,
 			errors: {
 				401: `Unauthorized, you must add a valid JWT into Authorization Header with the format : \`Bearer TOKEN\``,
-				403: `The JWT token hasn't the privileges or Roles for this action`,
-			},
-		});
+				403: `The JWT token hasn't the privileges or Roles for this action`
+			}
+		})
 	}
 
 	/**
@@ -74,19 +73,19 @@ export class PartnerManagementService {
 	 * @throws ApiError
 	 */
 	public partnersGetPartner(
-		authorization?: string,
+		authorization?: string
 	): CancelablePromise<HelloAsso_Api_V5_Models_Partners_PartnerPublicModel> {
 		return this.httpRequest.request({
-			method: 'GET',
-			url: '/partners/me',
+			method: "GET",
+			url: "/partners/me",
 			headers: {
-				'Authorization': authorization,
+				Authorization: authorization
 			},
 			errors: {
 				401: `Unauthorized, you must add a valid JWT into Authorization Header with the format : \`Bearer TOKEN\``,
-				403: `The JWT token hasn't the privileges or Roles for this action`,
-			},
-		});
+				403: `The JWT token hasn't the privileges or Roles for this action`
+			}
+		})
 	}
 
 	/**
@@ -103,23 +102,22 @@ export class PartnerManagementService {
 	public partnersGetOrganizations(
 		pageSize: number = 20,
 		continuationToken?: string,
-		authorization?: string,
+		authorization?: string
 	): CancelablePromise<HelloAsso_Api_V5_Models_Common_ResultsWithPaginationModelOfHelloAsso_Api_V5_Models_Directory_PartnerOrganizationModel> {
 		return this.httpRequest.request({
-			method: 'GET',
-			url: '/partners/me/organizations',
+			method: "GET",
+			url: "/partners/me/organizations",
 			headers: {
-				'Authorization': authorization,
+				Authorization: authorization
 			},
 			query: {
-				'pageSize': pageSize,
-				'continuationToken': continuationToken,
+				pageSize: pageSize,
+				continuationToken: continuationToken
 			},
 			errors: {
 				401: `Unauthorized, you must add a valid JWT into Authorization Header with the format : \`Bearer TOKEN\``,
-				403: `The JWT token hasn't the privileges or Roles for this action`,
-			},
-		});
+				403: `The JWT token hasn't the privileges or Roles for this action`
+			}
+		})
 	}
-
 }

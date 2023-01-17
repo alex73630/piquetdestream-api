@@ -9,10 +9,9 @@ export type HelloAsso_Api_V5_Models_Common_ContactModel = {
 	/**
 	 * Contact email
 	 */
-	email?: string;
+	email?: string
 	/**
 	 * Contact phone number
 	 */
-	phoneNumber?: string;
-};
-
+	phoneNumber?: string
+}
