@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/alex73630/piquetdestream-api/compare/v1.3.0...v1.3.1) (2023-01-17)
+
+
+### Bug Fixes
+
+* **ci:** put it in the right pipeline ([fd1076e](https://github.com/alex73630/piquetdestream-api/commit/fd1076e3bfb740d72286e223ec6466823c779706))
+
 # [1.3.0](https://github.com/alex73630/piquetdestream-api/compare/v1.2.0...v1.3.0) (2023-01-17)
 
 
