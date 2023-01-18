@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/alex73630/piquetdestream-api/compare/v1.9.0...v1.10.0) (2023-01-18)
+
+
+### Features
+
+* **redis:** reset lastdonationfetch on counter reset ([57a570f](https://github.com/alex73630/piquetdestream-api/commit/57a570fd50af4848806b468504c8700e3909df65))
+
 # [1.9.0](https://github.com/alex73630/piquetdestream-api/compare/v1.8.1...v1.9.0) (2023-01-18)
 
 
