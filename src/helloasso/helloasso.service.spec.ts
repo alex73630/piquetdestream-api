@@ -1,8 +1,11 @@
-import { RedisService } from "@liaoliaots/nestjs-redis"
 import { Test, TestingModule } from "@nestjs/testing"
 import { ExtendedConfigService } from "../config/config.service"
 import { CounterService } from "../counter/counter.service"
 import { HelloAssoService } from "./helloasso.service"
+import { ModuleMocker, MockFunctionMetadata } from "jest-mock"
+import { RedisService } from "../redis/redis.service"
+
+const moduleMocker = new ModuleMocker(global)
 
 describe("HelloAssoService", () => {
 	let service: HelloAssoService
@@ -29,6 +32,16 @@ describe("HelloAssoService", () => {
 						updateCounter: jest.fn(),
 						getState: jest.fn()
 					}
+				}
+				// Mock redis service
+				if (token === RedisService) {
+					const redisServiceMetadata = moduleMocker.getMetadata(RedisService) as MockFunctionMetadata<
+						any,
+						any
+					>
+
+					const redisServiceMock = moduleMocker.generateFromMetadata(redisServiceMetadata)
+					return new redisServiceMock()
 				}
 			})
 			.compile()

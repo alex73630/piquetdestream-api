@@ -79,7 +79,12 @@ export class RedisService {
 	}
 
 	async setAccessToken(token: string, expirationDate: Date) {
-		return this.redisClient.set("accessToken", token, "EX", expirationDate.getTime() - Date.now())
+		return this.redisClient.set(
+			"accessToken",
+			token,
+			"EX",
+			Math.round((expirationDate.getTime() - Date.now()) / 1000)
+		)
 	}
 
 	async getAccessToken() {
@@ -87,7 +92,12 @@ export class RedisService {
 	}
 
 	async setRefreshToken(token: string, expirationDate: Date) {
-		return this.redisClient.set("refreshToken", token, "EX", expirationDate.getTime() - Date.now())
+		return this.redisClient.set(
+			"refreshToken",
+			token,
+			"EX",
+			Math.round((expirationDate.getTime() - Date.now()) / 1000)
+		)
 	}
 
 	async getRefreshToken() {
