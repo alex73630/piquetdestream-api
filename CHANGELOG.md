@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/alex73630/piquetdestream-api/compare/v1.10.0...v1.11.0) (2023-01-18)
+
+
+### Features
+
+* **helloasso:** add dedup on getDonationsSinceLastFetch ([3179c11](https://github.com/alex73630/piquetdestream-api/commit/3179c119eae24ece6d52051d058eca0fc4b63017))
+
 # [1.10.0](https://github.com/alex73630/piquetdestream-api/compare/v1.9.0...v1.10.0) (2023-01-18)
 
 
