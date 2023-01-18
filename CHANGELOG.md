@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/alex73630/piquetdestream-api/compare/v1.6.0...v1.7.0) (2023-01-18)
+
+
+### Features
+
+* bunch of features ([e4a2f78](https://github.com/alex73630/piquetdestream-api/commit/e4a2f78c9ad15a70dd078ac879b5ec1ee46d2473))
+
 # [1.6.0](https://github.com/alex73630/piquetdestream-api/compare/v1.5.2...v1.6.0) (2023-01-17)
 
 
