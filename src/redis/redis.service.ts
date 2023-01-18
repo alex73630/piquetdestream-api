@@ -64,6 +64,7 @@ export class RedisService {
 	async resetCounter() {
 		await this.redisClient.del("counter")
 		await this.redisClient.del("donations")
+		await this.redisClient.del("lastDonationFetch")
 	}
 
 	async setLastDonationFetch(date: Date) {
