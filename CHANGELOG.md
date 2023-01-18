@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/alex73630/piquetdestream-api/compare/v1.12.0...v1.13.0) (2023-01-18)
+
+
+### Features
+
+* **auth:** protect routes with static token ([16e200c](https://github.com/alex73630/piquetdestream-api/commit/16e200c055c54da6d45e06bd3d3f0ad1651f5635))
+
 # [1.12.0](https://github.com/alex73630/piquetdestream-api/compare/v1.11.0...v1.12.0) (2023-01-18)
 
 
