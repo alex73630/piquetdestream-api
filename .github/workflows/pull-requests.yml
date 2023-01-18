@@ -65,7 +65,7 @@ jobs:
           echo "REDIS_URL=redis://localhost:6379" >> .env
           echo "HELLOASSO_CLIENT_ID=123" >> .env
           echo "HELLOASSO_CLIENT_SECRET=123" >> .env
-          echo "HELLOASSO_ACCESS_TOKEN=123" >> .env
+          echo "AUTH_TOKEN=123" >> .env
 
       - name: Test the app on Node.js ${{ matrix.node-version }}
         run: npm test

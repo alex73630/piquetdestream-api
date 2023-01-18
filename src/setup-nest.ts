@@ -49,6 +49,7 @@ export async function setupNest(app: NestExpressApplication | INestApplication):
 		.setTitle("Piquet De Stream API")
 		.setDescription("API for the Piquet De Stream project")
 		.setVersion("1.0")
+		.addBearerAuth()
 		.build()
 	const document = SwaggerModule.createDocument(app, config)
 	SwaggerModule.setup("docs", app, document, {

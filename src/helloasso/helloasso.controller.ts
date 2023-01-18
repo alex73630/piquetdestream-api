@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post } from "@nestjs/common"
-import { ApiTags } from "@nestjs/swagger"
+import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common"
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger"
+import { BearerTokenAuthGuard } from "../auth/bearer-token.guard"
 import { HelloAssoNotificationDto } from "./dto/helloasso-notification.dto"
 import { HelloAssoService } from "./helloasso.service"
 import { HelloAssoNotification, HelloAssoNotificationEventType } from "./interfaces/helloasso-notification.interface"
@@ -14,16 +15,22 @@ export class HelloAssoController {
 		return this.helloAssoService.handleNotifications(body as HelloAssoNotification)
 	}
 
+	@UseGuards(BearerTokenAuthGuard)
+	@ApiBearerAuth()
 	@Get("refresh-total")
 	async updateTotal() {
 		return this.helloAssoService.updateTotalDonationsFromApi()
 	}
 
+	@UseGuards(BearerTokenAuthGuard)
+	@ApiBearerAuth()
 	@Get("refresh-donations")
 	async updateDonations() {
 		return this.helloAssoService.getDonationsSinceLastFetch()
 	}
 
+	@UseGuards(BearerTokenAuthGuard)
+	@ApiBearerAuth()
 	@Post("fake-notification")
 	async fakeNotification() {
 		return this.helloAssoService.handleNotifications({

@@ -17,4 +17,9 @@ export class NestConfigDto {
 	@IsString({ each: true })
 	@IsNotEmpty()
 	CORS_ORIGINS: string[]
+
+	@Expose()
+	@IsString()
+	@IsNotEmpty()
+	AUTH_TOKEN: string
 }

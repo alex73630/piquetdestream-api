@@ -6,6 +6,7 @@ import { HelloAssoService } from "./helloasso.service"
 import { ModuleMocker, MockFunctionMetadata } from "jest-mock"
 import { RedisService } from "../redis/redis.service"
 import { SchedulerRegistry } from "@nestjs/schedule"
+import { BearerTokenAuthGuard } from "../auth/bearer-token.guard"
 
 const moduleMocker = new ModuleMocker(global)
 
@@ -21,7 +22,7 @@ describe("HelloAssoController", () => {
 
 	beforeEach(async () => {
 		const module: TestingModule = await Test.createTestingModule({
-			providers: [HelloAssoService],
+			providers: [HelloAssoService, BearerTokenAuthGuard],
 			controllers: [HelloAssoController]
 		})
 			.useMocker((token) => {

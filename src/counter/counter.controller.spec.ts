@@ -1,4 +1,6 @@
 import { Test, TestingModule } from "@nestjs/testing"
+import { BearerTokenAuthGuard } from "../auth/bearer-token.guard"
+import { ExtendedConfigService } from "../config/config.service"
 import { RedisService } from "../redis/redis.service"
 import { CounterController } from "./counter.controller"
 import { CounterService } from "./counter.service"
@@ -8,10 +10,20 @@ describe("CounterController", () => {
 
 	beforeEach(async () => {
 		const module: TestingModule = await Test.createTestingModule({
-			providers: [CounterService],
+			providers: [CounterService, BearerTokenAuthGuard],
 			controllers: [CounterController]
 		})
 			.useMocker((token) => {
+				// Mock config service
+				if (token === ExtendedConfigService) {
+					return {
+						get: jest.fn().mockImplementation((key) => {
+							if (key === "nest.authToken") {
+								return "authToken"
+							}
+						})
+					}
+				}
 				// Mock redis service
 				if (token === RedisService) {
 					return {
