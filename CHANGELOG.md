@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/alex73630/piquetdestream-api/compare/v1.7.0...v1.8.0) (2023-01-18)
+
+
+### Features
+
+* add redis persistence ([c317857](https://github.com/alex73630/piquetdestream-api/commit/c317857e734714ea8359f7a2c87b0c8653065770))
+
 # [1.7.0](https://github.com/alex73630/piquetdestream-api/compare/v1.6.0...v1.7.0) (2023-01-18)
 
 
