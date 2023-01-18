@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/alex73630/piquetdestream-api/compare/v1.13.0...v1.13.1) (2023-01-18)
+
+
+### Bug Fixes
+
+* extend donation timings ([9d0cc9a](https://github.com/alex73630/piquetdestream-api/commit/9d0cc9a4062276ada80bcc4e3e42cc4b7c29a4cb))
+
 # [1.13.0](https://github.com/alex73630/piquetdestream-api/compare/v1.12.0...v1.13.0) (2023-01-18)
 
 
