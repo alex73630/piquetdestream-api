@@ -160,7 +160,7 @@ export class HelloAssoService {
 		this.logger.debug("Fetching donations since last fetch date...")
 
 		const lastFetch = dayjs(await this.redisService.getLastDonationFetch())
-			.subtract(30, "second")
+			.subtract(5, "minute")
 			.toDate()
 		const newFetch = new Date()
 
