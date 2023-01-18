@@ -1,3 +1,15 @@
+# [1.9.0](https://github.com/alex73630/piquetdestream-api/compare/v1.8.1...v1.9.0) (2023-01-18)
+
+
+### Bug Fixes
+
+* unit test broken and wrong scale for redis ttl ([4952ed7](https://github.com/alex73630/piquetdestream-api/commit/4952ed727d2b0f01edf920ff728e8b8c61d3cf4f))
+
+
+### Features
+
+* **helloasso:** add fix for missing donation notif ([70c7047](https://github.com/alex73630/piquetdestream-api/commit/70c7047eb381100b07752058d6e10e36268feede))
+
 ## [1.8.1](https://github.com/alex73630/piquetdestream-api/compare/v1.8.0...v1.8.1) (2023-01-18)
 
 
