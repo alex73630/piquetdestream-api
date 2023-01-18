@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/alex73630/piquetdestream-api/compare/v1.13.1...v1.13.2) (2023-01-18)
+
+
+### Bug Fixes
+
+* raise fetch duration to 5min ([1b2e1aa](https://github.com/alex73630/piquetdestream-api/commit/1b2e1aa4c333a80177588b508be483c9decbe315))
+
 ## [1.13.1](https://github.com/alex73630/piquetdestream-api/compare/v1.13.0...v1.13.1) (2023-01-18)
 
 
