@@ -8,6 +8,7 @@ import { RedisModule } from "./redis/redis.module"
 import { RedisModule as NestRedisModule } from "@liaoliaots/nestjs-redis"
 import { RedisOptions } from "./config/redis/redis-config.interface"
 import { ExtendedConfigService } from "./config/config.service"
+import { ScheduleModule } from "@nestjs/schedule"
 
 @Module({
 	imports: [
@@ -25,7 +26,8 @@ import { ExtendedConfigService } from "./config/config.service"
 					}
 				}
 			}
-		})
+		}),
+		ScheduleModule.forRoot()
 	],
 	controllers: [AppController],
 	providers: [AppService]

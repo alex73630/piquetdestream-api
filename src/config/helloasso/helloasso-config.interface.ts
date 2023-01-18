@@ -3,6 +3,6 @@ export interface HelloAssoOptions {
 	clientId: string
 	// HelloAsso Client Secret
 	clientSecret: string
-	// HelloAsso access token
-	accessToken: string
+	// Enable manual fetching of donations
+	enableManualFetching: boolean
 }

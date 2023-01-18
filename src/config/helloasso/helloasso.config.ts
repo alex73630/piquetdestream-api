@@ -11,7 +11,7 @@ export class HelloAssoConfig extends BaseConfig<HelloAssoConfigDto, HelloAssoOpt
 		return {
 			clientId: parsedConfig.HELLOASSO_CLIENT_ID,
 			clientSecret: parsedConfig.HELLOASSO_CLIENT_SECRET,
-			accessToken: parsedConfig.HELLOASSO_ACCESS_TOKEN
+			enableManualFetching: parsedConfig.HELLOASSO_ENABLE_MANUAL_FETCHING
 		}
 	}
 }

@@ -1,5 +1,5 @@
-import { Expose } from "class-transformer"
-import { IsString } from "class-validator"
+import { Expose, Transform } from "class-transformer"
+import { IsBoolean, IsString } from "class-validator"
 
 export class HelloAssoConfigDto {
 	@Expose()
@@ -11,6 +11,7 @@ export class HelloAssoConfigDto {
 	HELLOASSO_CLIENT_SECRET: string
 
 	@Expose()
-	@IsString()
-	HELLOASSO_ACCESS_TOKEN: string
+	@IsBoolean()
+	@Transform(({ value }) => value === "true")
+	HELLOASSO_ENABLE_MANUAL_FETCHING: boolean
 }

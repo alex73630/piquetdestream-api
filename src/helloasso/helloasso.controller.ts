@@ -19,6 +19,11 @@ export class HelloAssoController {
 		return this.helloAssoService.updateTotalDonationsFromApi()
 	}
 
+	@Get("refresh-donations")
+	async updateDonations() {
+		return this.helloAssoService.getDonationsSinceLastFetch()
+	}
+
 	@Post("fake-notification")
 	async fakeNotification() {
 		return this.helloAssoService.handleNotifications({

@@ -23,10 +23,9 @@ export class CounterService {
 		this.counterSubject.next({ data: payload, type: "counter-update" })
 	}
 
-	public async newDonation(amount: number, name: string, id: number): Promise<void> {
+	public async newDonation(amount: number, id: number): Promise<void> {
 		const payload: CounterMessagePayload = {
-			amount: this.amountToFloat(amount),
-			name
+			amount: this.amountToFloat(amount)
 		}
 
 		let { amount: counter } = await this.redisService.getCounterValue()
