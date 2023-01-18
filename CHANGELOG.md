@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/alex73630/piquetdestream-api/compare/v1.8.0...v1.8.1) (2023-01-18)
+
+
+### Bug Fixes
+
+* amount not parsed correctly for frontend ([b47bc7f](https://github.com/alex73630/piquetdestream-api/commit/b47bc7ff87ddf88b628d7f8631f70de55851a5d1))
+
 # [1.8.0](https://github.com/alex73630/piquetdestream-api/compare/v1.7.0...v1.8.0) (2023-01-18)
 
 
