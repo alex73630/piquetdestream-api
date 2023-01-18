@@ -6,22 +6,40 @@ import { CounterMessage, CounterMessagePayload } from "./interfaces/counter-mess
 export class CounterService {
 	public counterSubject: Subject<CounterMessage>
 
+	private counter = 0
+	private updatedAt = Date.now()
+
 	constructor() {
 		this.counterSubject = new Subject()
 	}
 
-	public updateCounter(amount: number): void {
+	public updateCounter(amount: string): void {
 		const payload: CounterMessagePayload = {
 			amount,
 			updatedAt: Date.now()
 		}
+
+		this.counter = parseFloat(amount)
+		this.updatedAt = Date.now()
 		this.counterSubject.next({ data: payload, type: "counter-update" })
 	}
 
-	public newDonation(amount: number): void {
+	public newDonation(amount: string, name: string): void {
 		const payload: CounterMessagePayload = {
-			amount
+			amount,
+			name
 		}
+
+		this.counter += parseFloat(amount)
+		this.updatedAt = Date.now()
 		this.counterSubject.next({ data: payload, type: "new-donation" })
+		this.updateCounter(this.counter.toFixed(2))
+	}
+
+	public getState(): CounterMessagePayload {
+		return {
+			amount: this.counter.toFixed(2),
+			updatedAt: this.updatedAt
+		}
 	}
 }

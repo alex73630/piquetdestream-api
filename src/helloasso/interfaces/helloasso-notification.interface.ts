@@ -1,4 +1,8 @@
-import { HelloAsso_Api_V5_Models_Statistics_Order, HelloAsso_Api_V5_Models_Statistics_Payment } from "../api-interface"
+import {
+	HelloAsso_Api_V5_Models_Forms_FormPublicModel,
+	HelloAsso_Api_V5_Models_Statistics_OrderDetail,
+	HelloAsso_Api_V5_Models_Statistics_PaymentDetail
+} from "../api-interface"
 
 export enum HelloAssoNotificationEventType {
 	ORDER = "Order",
@@ -13,15 +17,15 @@ export type HelloAssoNotification =
 
 export interface HelloAssoOrderNotification {
 	eventType: HelloAssoNotificationEventType.ORDER
-	data: HelloAsso_Api_V5_Models_Statistics_Order
+	data: HelloAsso_Api_V5_Models_Statistics_OrderDetail
 }
 
 export interface HelloAssoPaymentNotification {
 	eventType: HelloAssoNotificationEventType.PAYMENT
-	data: HelloAsso_Api_V5_Models_Statistics_Payment
+	data: HelloAsso_Api_V5_Models_Statistics_PaymentDetail
 }
 
 export interface HelloAssoFormNotification {
 	eventType: HelloAssoNotificationEventType.FORM
-	data: unknown
+	data: HelloAsso_Api_V5_Models_Forms_FormPublicModel
 }

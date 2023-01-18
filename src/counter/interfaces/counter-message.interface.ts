@@ -7,7 +7,8 @@ export interface NewDonationEvent {
 
 export interface NewDonationPayload {
 	// Amount of the donation in euros
-	amount: number
+	amount: string
+	name?: string
 }
 
 export interface CounterUpdateEvent {
@@ -19,7 +20,7 @@ export interface CounterUpdateEvent {
 
 export interface CounterUpdatePayload {
 	// Total amount of donations in euros
-	amount: number
+	amount: string
 	// Timestamp in milliseconds
 	updatedAt: number
 }

@@ -56,8 +56,22 @@ jobs:
       - name: Build the app
         run: npm run build
 
+      - name: Setup environment variables for tests
+        run: |
+          echo "NODE_ENV=production" >> .env
+          echo "API_DOMAIN=localhost" >> .env
+          echo "PORT=3000" >> .env
+          echo "CORS_ORIGINS=http://localhost,http://localhost:3000" >> .env
+          echo "REDIS_URL=redis://localhost:6379" >> .env
+          echo "HELLOASSO_CLIENT_ID=123" >> .env
+          echo "HELLOASSO_CLIENT_SECRET=123" >> .env
+          echo "HELLOASSO_ACCESS_TOKEN=123" >> .env
+
       - name: Test the app on Node.js ${{ matrix.node-version }}
         run: npm test
+
+      - name: Run e2e tests
+        run: npm run test:e2e
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3

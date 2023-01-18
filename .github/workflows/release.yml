@@ -10,7 +10,7 @@ env:
 
 jobs:
   release:
-    name: Release
+    name: Build, test and release app
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,14 +25,18 @@ jobs:
         run: npm ci
       - name: Build the app
         run: npm run build
-      - name: Run unit tests
-        run: npm run test
-      - name: Setup environment variables for e2e tests
+      - name: Setup environment variables for tests
         run: |
           echo "NODE_ENV=production" >> .env
           echo "API_DOMAIN=localhost" >> .env
           echo "PORT=3000" >> .env
           echo "CORS_ORIGINS=http://localhost,http://localhost:3000" >> .env
+          echo "REDIS_URL=redis://localhost:6379" >> .env
+          echo "HELLOASSO_CLIENT_ID=123" >> .env
+          echo "HELLOASSO_CLIENT_SECRET=123" >> .env
+          echo "HELLOASSO_ACCESS_TOKEN=123" >> .env
+      - name: Run unit tests
+        run: npm run test
       - name: Run e2e tests
         run: npm run test:e2e
       - name: Release
@@ -46,6 +50,7 @@ jobs:
           path: |
             dist
   build-and-push-image:
+    name: Build and push Docker image
     runs-on: ubuntu-latest
     needs: release
     permissions:

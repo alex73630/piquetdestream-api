@@ -3,9 +3,11 @@ import { ConfigModule } from "@nestjs/config"
 import { BaseConfig } from "./config-class"
 import { ExtendedConfigService } from "./config.service"
 import { ConfigValidate } from "./config.validation"
+import { HelloAssoConfig } from "./helloasso/helloasso.config"
 import { NestConfig } from "./nest/nest.config"
+import { RedisConfig } from "./redis/redis.config"
 
-const ConfigClasses: BaseConfig<any, any>[] = [new NestConfig()]
+const ConfigClasses: BaseConfig<any, any>[] = [new NestConfig(), new HelloAssoConfig(), new RedisConfig()]
 
 @Global()
 @Module({

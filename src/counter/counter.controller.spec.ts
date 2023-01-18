@@ -17,4 +17,11 @@ describe("CounterController", () => {
 	it("should be defined", () => {
 		expect(controller).toBeDefined()
 	})
+
+	it("should return the current state", () => {
+		expect(controller.getState()).toEqual({
+			amount: expect.any(String),
+			updatedAt: expect.any(Number)
+		})
+	})
 })

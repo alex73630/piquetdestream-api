@@ -16,9 +16,6 @@ export class CounterController {
 
 	@Get("state")
 	getState(): CounterMessagePayload {
-		return {
-			amount: 0,
-			updatedAt: Date.now()
-		}
+		return this.counterService.getState()
 	}
 }
