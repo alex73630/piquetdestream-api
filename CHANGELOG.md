@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/alex73630/piquetdestream-api/compare/v1.11.0...v1.12.0) (2023-01-18)
+
+
+### Features
+
+* **cron:** add timer switch on getDonationsSinceLastFetch ([de2f61a](https://github.com/alex73630/piquetdestream-api/commit/de2f61a3fc7051b435e65c294121c00fbdd99c42))
+
 # [1.11.0](https://github.com/alex73630/piquetdestream-api/compare/v1.10.0...v1.11.0) (2023-01-18)
 
 
