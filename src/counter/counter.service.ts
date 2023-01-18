@@ -15,7 +15,7 @@ export class CounterService {
 
 	public updateCounter(amount: number): void {
 		const payload: CounterMessagePayload = {
-			amount: amount.toFixed(2),
+			amount: this.amountToFloat(amount),
 			updatedAt: Date.now()
 		}
 
@@ -25,7 +25,7 @@ export class CounterService {
 
 	public async newDonation(amount: number, name: string, id: number): Promise<void> {
 		const payload: CounterMessagePayload = {
-			amount: amount.toFixed(2),
+			amount: this.amountToFloat(amount),
 			name
 		}
 
@@ -51,7 +51,7 @@ export class CounterService {
 		}
 
 		return {
-			amount: (payload.amount / 100).toFixed(2),
+			amount: this.amountToFloat(payload.amount),
 			updatedAt: payload.updatedAt
 		}
 	}
@@ -68,5 +68,9 @@ export class CounterService {
 
 	public async resetCounter(): Promise<void> {
 		return this.redisService.resetCounter()
+	}
+
+	private amountToFloat(amount: number): string {
+		return (amount / 100).toFixed(2)
 	}
 }
