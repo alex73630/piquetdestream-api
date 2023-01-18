@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+    redis:
+        image: redis:6-alpine
+        restart: unless-stopped
+        networks:
+            - nest
+        env_file:
+            - .env
+        volumes:
+            - redis:/data
+        ports:
+            - 127.0.0.1:6379:6379
+
+networks:
+    nest:
+
+
+volumes:
+    redis:

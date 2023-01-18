@@ -14,7 +14,7 @@ export class HelloAssoController {
 		return this.helloAssoService.handleNotifications(body as HelloAssoNotification)
 	}
 
-	@Get("update-total")
+	@Get("refresh-total")
 	async updateTotal() {
 		return this.helloAssoService.updateTotalDonationsFromApi()
 	}
@@ -28,7 +28,7 @@ export class HelloAssoController {
 					total: 1000
 				},
 				formSlug: "2",
-				id: 12345,
+				id: Date.now(),
 				payer: {
 					firstName: "John",
 					lastName: "Doe",

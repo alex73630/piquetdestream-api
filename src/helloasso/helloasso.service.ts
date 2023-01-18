@@ -2,7 +2,7 @@ import { Injectable, Logger } from "@nestjs/common"
 import { ExtendedConfigService } from "../config/config.service"
 import { HelloAssoOptions } from "../config/helloasso/helloasso-config.interface"
 import { CounterService } from "../counter/counter.service"
-import { NewDonationPayload } from "../counter/interfaces/counter-message.interface"
+import { DonationPayload } from "../redis/interfaces/redis.interface"
 import {
 	HelloAssoApi,
 	HelloAsso_Api_V5_Models_Statistics_OrderDetail,
@@ -44,14 +44,14 @@ export class HelloAssoService {
 		}
 
 		// Prepare data for our counter
-		const payload: NewDonationPayload = {
-			amount: (data.amount.total / 100).toFixed(2),
+		const payload = {
+			amount: data.amount.total,
 			name: data.payer.firstName
 		}
 
 		// Send data to our counter
 		this.logger.debug("Sending donation to counter")
-		this.counterService.newDonation(payload.amount, payload.name)
+		this.counterService.newDonation(payload.amount, payload.name, data.id)
 	}
 
 	private async handlePaymentNotification(_data: HelloAsso_Api_V5_Models_Statistics_PaymentDetail) {
@@ -75,6 +75,11 @@ export class HelloAssoService {
 		)
 		let total = response.data.reduce((acc, curr) => acc + curr.amount.total, 0)
 
+		let donations: DonationPayload[] = response.data.map((donation) => ({
+			amount: donation.amount.total,
+			id: donation.id
+		}))
+
 		// Loop through all donations and add them to the total using pagination.totalPages
 		const totalPages = response.pagination.totalPages
 		if (totalPages > 1) {
@@ -94,11 +99,19 @@ export class HelloAssoService {
 					`Bearer ${this.configService.get<HelloAssoOptions["accessToken"]>("helloasso.accessToken")}`
 				)
 				total += response.data.reduce((acc, curr) => acc + curr.amount.total, 0)
+				donations = donations.concat(
+					response.data.map((donation) => ({
+						amount: donation.amount.total,
+						id: donation.id
+					}))
+				)
 			}
 		}
 
 		this.logger.debug(`Total donations: ${(total / 100).toFixed(2)}€`)
-		this.counterService.updateCounter((total / 100).toFixed(2))
+		this.counterService.updateCounter(total)
 		return { total: (total / 100).toFixed(2) }
 	}
+
+	// TODO: add refresh token logic
 }
