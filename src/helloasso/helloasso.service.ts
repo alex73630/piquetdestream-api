@@ -165,8 +165,6 @@ export class HelloAssoService {
 			id: donation.id
 		}))
 
-		let total = response.data.reduce((acc, curr) => acc + curr.amount.total, 0)
-
 		let continuationToken = response.pagination.continuationToken
 
 		// Loop through all donations and add them to the total using pagination.totalPages
@@ -186,7 +184,6 @@ export class HelloAssoService {
 					null,
 					null
 				)
-				total += response.data.reduce((acc, curr) => acc + curr.amount.total, 0)
 				continuationToken = response.pagination.continuationToken
 				donations = donations.concat(
 					response.data.map((donation) => ({
@@ -197,13 +194,21 @@ export class HelloAssoService {
 			}
 		}
 
+		// Deduplicate donations by id
+		const existingDonations = await this.redisService.getDonations()
+		const deduplicatedDonations = donations.filter(
+			(donation) => !existingDonations.find((existing) => existing.id === donation.id)
+		)
+
+		const total = deduplicatedDonations.reduce((acc, curr) => acc + curr.amount, 0)
+
 		this.logger.debug(`Total donations since last fetch: ${(total / 100).toFixed(2)}€`)
 		// Add total to the current total
 		const { amount: currentTotal } = await this.redisService.getCounterValue()
 		this.counterService.updateCounter(currentTotal + total)
 
-		if (donations.length > 0) {
-			this.redisService.addDonations(donations)
+		if (deduplicatedDonations.length > 0) {
+			this.redisService.addDonations(deduplicatedDonations)
 		}
 
 		this.redisService.setLastDonationFetch(newFetch)
