@@ -1,5 +1,6 @@
 import { Injectable, Logger } from "@nestjs/common"
-import { Cron, CronExpression } from "@nestjs/schedule"
+import { CronExpression, SchedulerRegistry } from "@nestjs/schedule"
+import { CronJob } from "cron"
 import { ExtendedConfigService } from "../config/config.service"
 import { HelloAssoOptions } from "../config/helloasso/helloasso-config.interface"
 import { CounterService } from "../counter/counter.service"
@@ -18,14 +19,34 @@ export class HelloAssoService {
 	private readonly apiClient: HelloAssoApi
 	private readonly logger: Logger = new Logger(HelloAssoService.name)
 
+	private getDonationsSinceLastFetchCronJob: CronJob
+
 	constructor(
 		private readonly counterService: CounterService,
 		private readonly configService: ExtendedConfigService,
-		private readonly redisService: RedisService
+		private readonly redisService: RedisService,
+		private readonly schedulerRegistry: SchedulerRegistry
 	) {
 		this.apiClient = new HelloAssoApi({
 			TOKEN: () => this.resolveAccessToken()
 		})
+
+		const manualFetchEnabled = this.configService.get<HelloAssoOptions["enableManualFetching"]>(
+			"helloasso.enableManualFetching"
+		)
+
+		let cronExpression = CronExpression.EVERY_30_MINUTES
+
+		if (manualFetchEnabled) {
+			cronExpression = CronExpression.EVERY_MINUTE
+		}
+
+		this.logger.debug(`Cron expression: ${cronExpression}, manual fetch enabled: ${manualFetchEnabled}`)
+
+		this.getDonationsSinceLastFetchCronJob = new CronJob(cronExpression, () => this.getDonationsSinceLastFetch())
+
+		this.schedulerRegistry.addCronJob("getDonationsSinceLastFetch", this.getDonationsSinceLastFetchCronJob)
+		this.getDonationsSinceLastFetchCronJob.start()
 	}
 
 	async handleNotifications(payload: HelloAssoNotification) {
@@ -124,7 +145,6 @@ export class HelloAssoService {
 		return { total: (total / 100).toFixed(2) }
 	}
 
-	@Cron(CronExpression.EVERY_MINUTE)
 	async getDonationsSinceLastFetch() {
 		// Check if manual fetch is enabled
 		const manualFetchEnabled = this.configService.get<HelloAssoOptions["enableManualFetching"]>(
@@ -209,6 +229,10 @@ export class HelloAssoService {
 
 		if (deduplicatedDonations.length > 0) {
 			this.redisService.addDonations(deduplicatedDonations)
+			// Loop on donations and send them to the websocket
+			deduplicatedDonations.forEach((donation) => {
+				this.counterService.newDonation(donation.amount, donation.id, false)
+			})
 		}
 
 		this.redisService.setLastDonationFetch(newFetch)

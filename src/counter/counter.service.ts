@@ -23,20 +23,23 @@ export class CounterService {
 		this.counterSubject.next({ data: payload, type: "counter-update" })
 	}
 
-	public async newDonation(amount: number, id: number): Promise<void> {
+	public async newDonation(amount: number, id: number, updateRedis = true): Promise<void> {
 		const payload: CounterMessagePayload = {
 			amount: this.amountToFloat(amount)
 		}
 
-		let { amount: counter } = await this.redisService.getCounterValue()
+		if (updateRedis) {
+			let { amount: counter } = await this.redisService.getCounterValue()
 
-		if (isNaN(counter)) {
-			counter = 0
+			if (isNaN(counter)) {
+				counter = 0
+			}
+			counter += amount
+			this.redisService.addDonation({ id, amount })
+			this.updateCounter(counter)
 		}
-		counter += amount
-		this.redisService.addDonation({ id, amount })
+
 		this.counterSubject.next({ data: payload, type: "new-donation" })
-		this.updateCounter(counter)
 	}
 
 	public async getState(): Promise<CounterMessagePayload> {
