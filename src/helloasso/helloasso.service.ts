@@ -13,6 +13,7 @@ import {
 } from "./api-interface"
 import { HelloAssoApiAuthTokenResponse } from "./interfaces/helloasso-auth.interface"
 import { HelloAssoNotification } from "./interfaces/helloasso-notification.interface"
+import * as dayjs from "dayjs"
 
 @Injectable()
 export class HelloAssoService {
@@ -158,7 +159,9 @@ export class HelloAssoService {
 
 		this.logger.debug("Fetching donations since last fetch date...")
 
-		const lastFetch = await this.redisService.getLastDonationFetch()
+		const lastFetch = dayjs(await this.redisService.getLastDonationFetch())
+			.subtract(30, "second")
+			.toDate()
 		const newFetch = new Date()
 
 		if (!lastFetch) {
@@ -171,7 +174,7 @@ export class HelloAssoService {
 			"2",
 			"Donation",
 			lastFetch.toISOString(),
-			newFetch.toISOString(),
+			dayjs(newFetch).add(30, "second").toDate().toISOString(),
 			null,
 			1,
 			100,

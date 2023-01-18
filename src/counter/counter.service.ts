@@ -1,4 +1,5 @@
 import { Injectable, Logger } from "@nestjs/common"
+import { Cron, CronExpression } from "@nestjs/schedule"
 import { Subject } from "rxjs"
 import { DonationPayload } from "../redis/interfaces/redis.interface"
 import { RedisService } from "../redis/redis.service"
@@ -74,5 +75,10 @@ export class CounterService {
 
 	private amountToFloat(amount: number): string {
 		return (amount / 100).toFixed(2)
+	}
+
+	@Cron("*/10 * * * * *")
+	private keepAlive(): void {
+		this.counterSubject.next({ data: { time: new Date().getTime() }, type: "keep-alive" })
 	}
 }

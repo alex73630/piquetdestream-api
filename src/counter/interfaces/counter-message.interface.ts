@@ -25,6 +25,13 @@ export interface CounterUpdatePayload {
 	updatedAt: number
 }
 
-export type CounterMessage = NewDonationEvent | CounterUpdateEvent
+export interface KeepAliveEvent {
+	data: any
+	id?: string
+	type: "keep-alive"
+	retry?: number
+}
+
+export type CounterMessage = NewDonationEvent | CounterUpdateEvent | KeepAliveEvent
 
 export type CounterMessagePayload = NewDonationPayload | CounterUpdatePayload
