@@ -9,6 +9,9 @@ export interface NewDonationPayload {
 	// Amount of the donation in euros
 	amount: string
 	name?: string
+	message?: string
+	// Timestamp in milliseconds
+	createdAt?: number
 }
 
 export interface CounterUpdateEvent {

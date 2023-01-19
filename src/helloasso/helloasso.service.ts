@@ -4,7 +4,6 @@ import { CronJob } from "cron"
 import { ExtendedConfigService } from "../config/config.service"
 import { HelloAssoOptions } from "../config/helloasso/helloasso-config.interface"
 import { CounterService } from "../counter/counter.service"
-import { DonationPayload } from "../redis/interfaces/redis.interface"
 import { RedisService } from "../redis/redis.service"
 import {
 	HelloAssoApi,
@@ -14,6 +13,7 @@ import {
 import { HelloAssoApiAuthTokenResponse } from "./interfaces/helloasso-auth.interface"
 import { HelloAssoNotification } from "./interfaces/helloasso-notification.interface"
 import * as dayjs from "dayjs"
+import { HelloAssoDonationPayload } from "./interfaces/helloasso-donation.interface"
 
 @Injectable()
 export class HelloAssoService {
@@ -78,9 +78,22 @@ export class HelloAssoService {
 			return
 		}
 
+		const donationName =
+			data.items[0]?.customFields.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
+
+		const donationAnonymous =
+			data.items[0]?.customFields.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
+
+		const payload = {
+			amount: data.amount.total,
+			id: data.id,
+			name: donationAnonymous ? null : donationName,
+			createdAt: new Date(data.meta.createdAt).getTime()
+		}
+
 		// Send data to our counter
 		this.logger.debug("Sending donation to counter")
-		this.counterService.newDonation(data.amount.total, data.id)
+		this.counterService.newDonation(payload)
 	}
 
 	private async handlePaymentNotification(_data: HelloAsso_Api_V5_Models_Statistics_PaymentDetail) {
@@ -103,10 +116,20 @@ export class HelloAssoService {
 			null
 		)
 
-		const donations: DonationPayload[] = response.data.map((donation) => ({
-			amount: donation.amount.total,
-			id: donation.id
-		}))
+		const donations: HelloAssoDonationPayload[] = response.data.map((donation) => {
+			const donationName =
+				donation.items[0]?.customFields.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
+
+			const donationAnonymous =
+				donation.items[0]?.customFields.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
+
+			return {
+				amount: donation.amount.total,
+				id: donation.id,
+				name: donationAnonymous ? null : donationName,
+				createdAt: new Date(donation.meta.createdAt).getTime()
+			}
+		})
 
 		this.logger.debug(`Fetched ${donations.length} donations`)
 
@@ -131,10 +154,20 @@ export class HelloAssoService {
 				null
 			)
 
-			const moreDonations: DonationPayload[] = response.data.map((donation) => ({
-				amount: donation.amount.total,
-				id: donation.id
-			}))
+			const moreDonations: HelloAssoDonationPayload[] = response.data.map((donation) => {
+				const donationName =
+					donation.items[0]?.customFields.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
+
+				const donationAnonymous =
+					donation.items[0]?.customFields.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
+
+				return {
+					amount: donation.amount.total,
+					id: donation.id,
+					name: donationAnonymous ? null : donationName,
+					createdAt: new Date(donation.meta.createdAt).getTime()
+				}
+			})
 
 			if (moreDonations.length === 0) {
 				break
@@ -191,10 +224,20 @@ export class HelloAssoService {
 			null
 		)
 
-		const donations: DonationPayload[] = response.data.map((donation) => ({
-			amount: donation.amount.total,
-			id: donation.id
-		}))
+		const donations: HelloAssoDonationPayload[] = response.data.map((donation) => {
+			const donationName =
+				donation.items[0]?.customFields.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
+
+			const donationAnonymous =
+				donation.items[0]?.customFields.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
+
+			return {
+				amount: donation.amount.total,
+				id: donation.id,
+				name: donationAnonymous ? null : donationName,
+				createdAt: new Date(donation.meta.createdAt).getTime()
+			}
+		})
 
 		let continuationToken = response.pagination.totalCount > 100 ? response.pagination.continuationToken : null
 		let pageCounter = 1
@@ -217,10 +260,20 @@ export class HelloAssoService {
 				null
 			)
 
-			const moreDonations: DonationPayload[] = response.data.map((donation) => ({
-				amount: donation.amount.total,
-				id: donation.id
-			}))
+			const moreDonations: HelloAssoDonationPayload[] = response.data.map((donation) => {
+				const donationName =
+					donation.items[0]?.customFields.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
+
+				const donationAnonymous =
+					donation.items[0]?.customFields.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
+
+				return {
+					amount: donation.amount.total,
+					id: donation.id,
+					name: donationAnonymous ? null : donationName,
+					createdAt: new Date(donation.meta.createdAt).getTime()
+				}
+			})
 
 			if (moreDonations.length === 0) {
 				break
@@ -248,7 +301,7 @@ export class HelloAssoService {
 			this.redisService.addDonations(deduplicatedDonations)
 			// Loop on donations and send them to the websocket
 			deduplicatedDonations.forEach((donation) => {
-				this.counterService.newDonation(donation.amount, donation.id, false)
+				this.counterService.newDonation(donation, false)
 			})
 		}
 

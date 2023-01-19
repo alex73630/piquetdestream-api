@@ -1,6 +1,7 @@
 import { Injectable, Logger } from "@nestjs/common"
-import { Cron, CronExpression } from "@nestjs/schedule"
+import { Cron } from "@nestjs/schedule"
 import { Subject } from "rxjs"
+import { HelloAssoDonationPayload } from "../helloasso/interfaces/helloasso-donation.interface"
 import { DonationPayload } from "../redis/interfaces/redis.interface"
 import { RedisService } from "../redis/redis.service"
 import { CounterMessage, CounterMessagePayload } from "./interfaces/counter-message.interface"
@@ -24,9 +25,12 @@ export class CounterService {
 		this.counterSubject.next({ data: payload, type: "counter-update" })
 	}
 
-	public async newDonation(amount: number, id: number, updateRedis = true): Promise<void> {
+	public async newDonation(data: HelloAssoDonationPayload, updateRedis = true): Promise<void> {
 		const payload: CounterMessagePayload = {
-			amount: this.amountToFloat(amount)
+			amount: this.amountToFloat(data.amount),
+			name: data.name,
+			message: data.message,
+			createdAt: data.createdAt
 		}
 
 		if (updateRedis) {
@@ -35,8 +39,8 @@ export class CounterService {
 			if (isNaN(counter)) {
 				counter = 0
 			}
-			counter += amount
-			this.redisService.addDonation({ id, amount })
+			counter += data.amount
+			this.redisService.addDonation({ id: data.id, amount: data.amount })
 			this.updateCounter(counter)
 		}
 
