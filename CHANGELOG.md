@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/alex73630/piquetdestream-api/compare/v1.13.3...v1.14.0) (2023-01-19)
+
+
+### Features
+
+* **helloasso:** remove unecessary api calls ([fed10e3](https://github.com/alex73630/piquetdestream-api/commit/fed10e3a01c3d8b38624d16e658e1b856d4217c2))
+
 ## [1.13.3](https://github.com/alex73630/piquetdestream-api/compare/v1.13.2...v1.13.3) (2023-01-19)
 
 
