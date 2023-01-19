@@ -10,7 +10,7 @@ processes = []
   build-target = "production"
 
 [deploy]
-  release_command = npm run migrate:deploy
+  release_command = "npm run migrate:deploy"
 
 [env]
   PORT = 3000
