@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/alex73630/piquetdestream-api/compare/v1.15.0...v1.15.1) (2023-01-19)
+
+
+### Bug Fixes
+
+* typo ([cc558b2](https://github.com/alex73630/piquetdestream-api/commit/cc558b2a8f42264fadd583b4398279513b3b2ab0))
+
 # [1.15.0](https://github.com/alex73630/piquetdestream-api/compare/v1.14.0...v1.15.0) (2023-01-19)
 
 
