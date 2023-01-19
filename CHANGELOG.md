@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/alex73630/piquetdestream-api/compare/v1.14.0...v1.15.0) (2023-01-19)
+
+
+### Features
+
+* **helloasso:** add twitch username if exists ([c1d30cb](https://github.com/alex73630/piquetdestream-api/commit/c1d30cbfacf2be032ab295dfa9960470a7b337c3))
+
 # [1.14.0](https://github.com/alex73630/piquetdestream-api/compare/v1.13.3...v1.14.0) (2023-01-19)
 
 
