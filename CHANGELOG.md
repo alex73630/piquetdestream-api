@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/alex73630/piquetdestream-api/compare/v1.16.2...v1.17.0) (2023-01-19)
+
+
+### Features
+
+* **db:** use upsert/skipDuplicates on inserts ([45628c3](https://github.com/alex73630/piquetdestream-api/commit/45628c370291d396fb9c46f93c7526ae2f0fb7c1))
+
 ## [1.16.2](https://github.com/alex73630/piquetdestream-api/compare/v1.16.1...v1.16.2) (2023-01-19)
 
 
