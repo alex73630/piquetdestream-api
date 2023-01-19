@@ -1,3 +1,10 @@
+## [1.16.2](https://github.com/alex73630/piquetdestream-api/compare/v1.16.1...v1.16.2) (2023-01-19)
+
+
+### Bug Fixes
+
+* typo in fly.io config ([e52128d](https://github.com/alex73630/piquetdestream-api/commit/e52128d50de92261b90d69835e9f34a9c34d071d))
+
 ## [1.16.1](https://github.com/alex73630/piquetdestream-api/compare/v1.16.0...v1.16.1) (2023-01-19)
 
 
