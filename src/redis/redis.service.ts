@@ -1,7 +1,8 @@
 import { InjectRedis } from "@liaoliaots/nestjs-redis"
 import { Injectable } from "@nestjs/common"
 import { Redis } from "ioredis"
-import { DonationPayload } from "./interfaces/redis.interface"
+import { HelloAssoDonationPayload } from "../helloasso/interfaces/helloasso-donation.interface"
+import { LiteDonationPayload } from "./interfaces/redis.interface"
 
 @Injectable()
 export class RedisService {
@@ -23,11 +24,11 @@ export class RedisService {
 		}
 	}
 
-	async addDonation(payload: DonationPayload) {
+	async addDonation(payload: HelloAssoDonationPayload) {
 		return this.redisClient.zadd("donations", payload.amount, payload.id)
 	}
 
-	async addDonations(payload: DonationPayload[]) {
+	async addDonations(payload: HelloAssoDonationPayload[]) {
 		const args = payload.reduce((acc, curr) => {
 			acc.push(curr.amount, curr.id)
 			return acc
@@ -36,10 +37,10 @@ export class RedisService {
 		return this.redisClient.zadd("donations", ...args)
 	}
 
-	async getDonations() {
+	async getLiteDonations() {
 		const payload = await this.redisClient.zrange("donations", 0, -1, "WITHSCORES")
 
-		const donations: DonationPayload[] = []
+		const donations: LiteDonationPayload[] = []
 		for (let i = 0; i < payload.length; i += 2) {
 			donations.push({
 				id: parseInt(payload[i]),

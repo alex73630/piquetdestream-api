@@ -1,6 +1,7 @@
 import { Test, TestingModule } from "@nestjs/testing"
 import { BearerTokenAuthGuard } from "../auth/bearer-token.guard"
 import { ExtendedConfigService } from "../config/config.service"
+import { DatabaseService } from "../database/database.service"
 import { RedisService } from "../redis/redis.service"
 import { CounterController } from "./counter.controller"
 import { CounterService } from "./counter.service"
@@ -34,6 +35,16 @@ describe("CounterController", () => {
 						}),
 						addDonation: jest.fn(),
 						getDonations: jest.fn()
+					}
+				}
+				// Mock database service
+				if (token === DatabaseService) {
+					return {
+						donation: {
+							create: jest.fn(),
+							createMany: jest.fn(),
+							findMany: jest.fn()
+						}
 					}
 				}
 			})

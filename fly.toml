@@ -9,6 +9,9 @@ processes = []
   image = "ghcr.io/alex73630/piquetdestream-api:master"
   build-target = "production"
 
+[deploy]
+  release_command = npm run migrate:deploy
+
 [env]
   PORT = 3000
   NODE_ENV = "production"

@@ -6,10 +6,17 @@ import { Request, Response } from "express"
 import helmet from "helmet"
 import { ExtendedConfigService } from "./config/config.service"
 import { NestOptions } from "./config/nest/nest-config.interface"
+import { PrismaService } from "./prisma.service"
 
 export async function setupNest(app: NestExpressApplication | INestApplication): Promise<void> {
 	// Setup shutdown hooks
-	app.enableShutdownHooks()
+	try {
+		const prismaService = app.get(PrismaService)
+		await prismaService.enableShutdownHooks(app)
+	} catch (error) {
+		app.enableShutdownHooks()
+	}
+
 	const configService = app.get(ExtendedConfigService)
 
 	app.use(helmet())

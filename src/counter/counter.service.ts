@@ -2,8 +2,9 @@ import { Injectable, Logger } from "@nestjs/common"
 import { Cron } from "@nestjs/schedule"
 import { Subject } from "rxjs"
 import { HelloAssoDonationPayload } from "../helloasso/interfaces/helloasso-donation.interface"
-import { DonationPayload } from "../redis/interfaces/redis.interface"
+import { LiteDonationPayload } from "../redis/interfaces/redis.interface"
 import { RedisService } from "../redis/redis.service"
+import { amountToFloat } from "../utils/utils"
 import { CounterMessage, CounterMessagePayload } from "./interfaces/counter-message.interface"
 
 @Injectable()
@@ -17,7 +18,7 @@ export class CounterService {
 
 	public updateCounter(amount: number): void {
 		const payload: CounterMessagePayload = {
-			amount: this.amountToFloat(amount),
+			amount: amountToFloat(amount),
 			updatedAt: Date.now()
 		}
 
@@ -27,7 +28,8 @@ export class CounterService {
 
 	public async newDonation(data: HelloAssoDonationPayload, updateRedis = true): Promise<void> {
 		const payload: CounterMessagePayload = {
-			amount: this.amountToFloat(data.amount),
+			id: data.id,
+			amount: amountToFloat(data.amount),
 			name: data.name,
 			message: data.message,
 			createdAt: data.createdAt
@@ -40,7 +42,7 @@ export class CounterService {
 				counter = 0
 			}
 			counter += data.amount
-			this.redisService.addDonation({ id: data.id, amount: data.amount })
+			this.redisService.addDonation(data)
 			this.updateCounter(counter)
 		}
 
@@ -58,16 +60,16 @@ export class CounterService {
 		}
 
 		return {
-			amount: this.amountToFloat(payload.amount),
+			amount: amountToFloat(payload.amount),
 			updatedAt: payload.updatedAt
 		}
 	}
 
-	public async getTransactions(): Promise<DonationPayload[]> {
-		return this.redisService.getDonations()
+	public async getTransactions(): Promise<LiteDonationPayload[]> {
+		return this.redisService.getLiteDonations()
 	}
 
-	public async updateTransactions(transactions: DonationPayload[]): Promise<void> {
+	public async updateTransactions(transactions: HelloAssoDonationPayload[]): Promise<void> {
 		transactions.forEach((transaction) => {
 			this.redisService.addDonation(transaction)
 		})
@@ -75,10 +77,6 @@ export class CounterService {
 
 	public async resetCounter(): Promise<void> {
 		return this.redisService.resetCounter()
-	}
-
-	private amountToFloat(amount: number): string {
-		return (amount / 100).toFixed(2)
 	}
 
 	@Cron("*/10 * * * * *")

@@ -6,6 +6,7 @@ export interface NewDonationEvent {
 }
 
 export interface NewDonationPayload {
+	id?: number
 	// Amount of the donation in euros
 	amount: string
 	name?: string

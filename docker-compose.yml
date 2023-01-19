@@ -12,6 +12,19 @@ services:
             - redis:/data
         ports:
             - 127.0.0.1:6379:6379
+    postgres:
+        image: postgres:14.6
+        restart: unless-stopped
+        networks:
+            - nest
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: piquetdestream_api
+        volumes:
+            - postgres:/var/lib/postgresql/data
+        ports:
+            - "127.0.0.1:5432:5432"
 
 networks:
     nest:
@@ -19,3 +32,4 @@ networks:
 
 volumes:
     redis:
+    postgres:

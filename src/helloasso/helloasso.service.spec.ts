@@ -5,6 +5,7 @@ import { HelloAssoService } from "./helloasso.service"
 import { ModuleMocker, MockFunctionMetadata } from "jest-mock"
 import { RedisService } from "../redis/redis.service"
 import { SchedulerRegistry } from "@nestjs/schedule"
+import { DatabaseService } from "../database/database.service"
 
 const moduleMocker = new ModuleMocker(global)
 
@@ -55,6 +56,16 @@ describe("HelloAssoService", () => {
 				if (token === SchedulerRegistry) {
 					return {
 						addCronJob: jest.fn()
+					}
+				}
+				// Mock database service
+				if (token === DatabaseService) {
+					return {
+						donation: {
+							create: jest.fn(),
+							createMany: jest.fn(),
+							findMany: jest.fn()
+						}
 					}
 				}
 			})

@@ -45,7 +45,28 @@ export class HelloAssoController {
 					firstName: "John",
 					lastName: "Doe",
 					email: ""
-				}
+				},
+				meta: {
+					createdAt: new Date().toISOString()
+				},
+				items: [
+					{
+						customFields: [
+							{
+								name: "Votre message de soutien",
+								answer: "On lâche rien !"
+							},
+							{
+								name: "Anonymisation ?",
+								answer: "Non"
+							},
+							{
+								name: "Ton pseudo Twitch",
+								answer: "alex73630"
+							}
+						]
+					}
+				]
 			}
 		})
 	}

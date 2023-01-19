@@ -14,6 +14,7 @@ import { HelloAssoApiAuthTokenResponse } from "./interfaces/helloasso-auth.inter
 import { HelloAssoNotification } from "./interfaces/helloasso-notification.interface"
 import * as dayjs from "dayjs"
 import { HelloAssoDonationPayload } from "./interfaces/helloasso-donation.interface"
+import { DatabaseService } from "../database/database.service"
 
 @Injectable()
 export class HelloAssoService {
@@ -26,7 +27,8 @@ export class HelloAssoService {
 		private readonly counterService: CounterService,
 		private readonly configService: ExtendedConfigService,
 		private readonly redisService: RedisService,
-		private readonly schedulerRegistry: SchedulerRegistry
+		private readonly schedulerRegistry: SchedulerRegistry,
+		private readonly databaseService: DatabaseService
 	) {
 		this.apiClient = new HelloAssoApi({
 			TOKEN: () => this.resolveAccessToken()
@@ -78,22 +80,12 @@ export class HelloAssoService {
 			return
 		}
 
-		const donationName =
-			data.items[0]?.customFields.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
-
-		const donationAnonymous =
-			data.items[0]?.customFields.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
-
-		const payload = {
-			amount: data.amount.total,
-			id: data.id,
-			name: donationAnonymous ? null : donationName,
-			createdAt: new Date(data.meta.createdAt).getTime()
-		}
+		const payload = this.buildDonationPayload(data)
 
 		// Send data to our counter
 		this.logger.debug("Sending donation to counter")
 		this.counterService.newDonation(payload)
+		this.databaseService.insertDonation(payload)
 	}
 
 	private async handlePaymentNotification(_data: HelloAsso_Api_V5_Models_Statistics_PaymentDetail) {
@@ -116,20 +108,7 @@ export class HelloAssoService {
 			null
 		)
 
-		const donations: HelloAssoDonationPayload[] = response.data.map((donation) => {
-			const donationName =
-				donation.items[0]?.customFields?.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
-
-			const donationAnonymous =
-				donation.items[0]?.customFields?.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
-
-			return {
-				amount: donation.amount.total,
-				id: donation.id,
-				name: donationAnonymous ? null : donationName,
-				createdAt: new Date(donation.meta.createdAt).getTime()
-			}
-		})
+		const donations = response.data.map((donation) => this.buildDonationPayload(donation))
 
 		this.logger.debug(`Fetched ${donations.length} donations`)
 
@@ -154,20 +133,7 @@ export class HelloAssoService {
 				null
 			)
 
-			const moreDonations: HelloAssoDonationPayload[] = response.data.map((donation) => {
-				const donationName =
-					donation.items[0]?.customFields?.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
-
-				const donationAnonymous =
-					donation.items[0]?.customFields?.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
-
-				return {
-					amount: donation.amount.total,
-					id: donation.id,
-					name: donationAnonymous ? null : donationName,
-					createdAt: new Date(donation.meta.createdAt).getTime()
-				}
-			})
+			const moreDonations = response.data.map((donation) => this.buildDonationPayload(donation))
 
 			if (moreDonations.length === 0) {
 				break
@@ -183,6 +149,7 @@ export class HelloAssoService {
 		this.logger.debug(`Total donations: ${(total / 100).toFixed(2)}€`)
 		this.counterService.updateCounter(total)
 		this.redisService.addDonations(donations)
+		this.databaseService.insertDonations(donations)
 		this.redisService.setLastDonationFetch(lastFetch)
 		return { total: (total / 100).toFixed(2) }
 	}
@@ -200,9 +167,8 @@ export class HelloAssoService {
 
 		this.logger.debug("Fetching donations since last fetch date...")
 
-		const lastFetch = dayjs(await this.redisService.getLastDonationFetch())
-			.subtract(5, "minute")
-			.toDate()
+		const redisLastFetch = await this.redisService.getLastDonationFetch()
+		const lastFetch = redisLastFetch ? dayjs(redisLastFetch).subtract(5, "minute").toDate() : null
 		const newFetch = new Date()
 
 		if (!lastFetch) {
@@ -224,20 +190,7 @@ export class HelloAssoService {
 			null
 		)
 
-		const donations: HelloAssoDonationPayload[] = response.data.map((donation) => {
-			const donationName =
-				donation.items[0]?.customFields?.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
-
-			const donationAnonymous =
-				donation.items[0]?.customFields?.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
-
-			return {
-				amount: donation.amount.total,
-				id: donation.id,
-				name: donationAnonymous ? null : donationName,
-				createdAt: new Date(donation.meta.createdAt).getTime()
-			}
-		})
+		const donations = response.data.map((donation) => this.buildDonationPayload(donation))
 
 		let continuationToken = response.pagination.totalCount > 100 ? response.pagination.continuationToken : null
 		let pageCounter = 1
@@ -260,20 +213,7 @@ export class HelloAssoService {
 				null
 			)
 
-			const moreDonations: HelloAssoDonationPayload[] = response.data.map((donation) => {
-				const donationName =
-					donation.items[0]?.customFields?.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
-
-				const donationAnonymous =
-					donation.items[0]?.customFields?.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
-
-				return {
-					amount: donation.amount.total,
-					id: donation.id,
-					name: donationAnonymous ? null : donationName,
-					createdAt: new Date(donation.meta.createdAt).getTime()
-				}
-			})
+			const moreDonations = response.data.map((donation) => this.buildDonationPayload(donation))
 
 			if (moreDonations.length === 0) {
 				break
@@ -285,7 +225,7 @@ export class HelloAssoService {
 		}
 
 		// Deduplicate donations by id
-		const existingDonations = await this.redisService.getDonations()
+		const existingDonations = await this.redisService.getLiteDonations()
 		const deduplicatedDonations = donations.filter(
 			(donation) => !existingDonations.find((existing) => existing.id === donation.id)
 		)
@@ -299,6 +239,7 @@ export class HelloAssoService {
 
 		if (deduplicatedDonations.length > 0) {
 			this.redisService.addDonations(deduplicatedDonations)
+			this.databaseService.insertDonations(deduplicatedDonations)
 			// Loop on donations and send them to the websocket
 			deduplicatedDonations.forEach((donation) => {
 				this.counterService.newDonation(donation, false)
@@ -365,5 +306,41 @@ export class HelloAssoService {
 		await this.redisService.setRefreshToken(data.refresh_token, refreshExpirationDate)
 
 		return data.access_token
+	}
+
+	private getCustomFields(data: HelloAsso_Api_V5_Models_Statistics_OrderDetail) {
+		const donationName =
+			data.items && data.items[0] && data.items[0].customFields
+				? data.items[0]?.customFields?.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
+				: null
+
+		const donationAnonymous =
+			data.items && data.items[0] && data.items[0].customFields
+				? data.items[0]?.customFields?.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
+				: false
+
+		const donationMessage =
+			data.items && data.items[0] && data.items[0].customFields
+				? data.items[0]?.customFields?.find((field) => field.name === "Votre message de soutien")?.answer ||
+				  null
+				: null
+
+		return {
+			name: donationName,
+			anonymous: donationAnonymous,
+			message: donationMessage
+		}
+	}
+
+	private buildDonationPayload(donation: HelloAsso_Api_V5_Models_Statistics_OrderDetail): HelloAssoDonationPayload {
+		const { name, anonymous, message } = this.getCustomFields(donation)
+
+		return {
+			id: donation.id,
+			name: anonymous ? null : name,
+			amount: donation.amount.total,
+			message,
+			createdAt: new Date(donation.meta.createdAt).getTime()
+		}
 	}
 }

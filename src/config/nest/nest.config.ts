@@ -12,7 +12,8 @@ export class NestConfig extends BaseConfig<NestConfigDto, NestOptions> {
 			env: parsedConfig.NODE_ENV,
 			port: parsedConfig.PORT,
 			corsOrigins: parsedConfig.CORS_ORIGINS,
-			authToken: parsedConfig.AUTH_TOKEN
+			authToken: parsedConfig.AUTH_TOKEN,
+			databaseUrl: parsedConfig.DATABASE_URL
 		}
 	}
 }

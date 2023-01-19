@@ -1,6 +1,7 @@
 import { Expose, Transform } from "class-transformer"
-import { IsEnum, IsNotEmpty, IsNumber, IsString } from "class-validator"
+import { IsEnum, IsNotEmpty, IsNumber, IsString, ValidateIf } from "class-validator"
 import { Environment } from "./environment.interface"
+import isCi from "is-ci"
 
 export class NestConfigDto {
 	@Expose()
@@ -22,4 +23,11 @@ export class NestConfigDto {
 	@IsString()
 	@IsNotEmpty()
 	AUTH_TOKEN: string
+
+	@Expose()
+	@IsString()
+	@IsNotEmpty()
+	// Validate if not in CI, test or jest worker
+	@ValidateIf(() => !(isCi || process.env.NODE_ENV === Environment.Test || !!process.env.JEST_WORKER_ID))
+	DATABASE_URL: string
 }

@@ -5,4 +5,5 @@ export interface NestOptions {
 	port: number
 	corsOrigins: string[]
 	authToken: string
+	databaseUrl: string
 }

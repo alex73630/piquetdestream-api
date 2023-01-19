@@ -9,6 +9,8 @@ import { RedisModule as NestRedisModule } from "@liaoliaots/nestjs-redis"
 import { RedisOptions } from "./config/redis/redis-config.interface"
 import { ExtendedConfigService } from "./config/config.service"
 import { ScheduleModule } from "@nestjs/schedule"
+import { DatabaseModule } from "./database/database.module"
+import { PrismaService } from "./prisma.service"
 
 @Module({
 	imports: [
@@ -27,7 +29,8 @@ import { ScheduleModule } from "@nestjs/schedule"
 				}
 			}
 		}),
-		ScheduleModule.forRoot()
+		ScheduleModule.forRoot(),
+		DatabaseModule
 	],
 	controllers: [AppController],
 	providers: [AppService]
