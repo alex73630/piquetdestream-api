@@ -99,45 +99,54 @@ export class HelloAssoService {
 			1,
 			100,
 			null,
-			null,
+			true,
 			null
 		)
-		let total = response.data.reduce((acc, curr) => acc + curr.amount.total, 0)
 
-		let donations: DonationPayload[] = response.data.map((donation) => ({
+		const donations: DonationPayload[] = response.data.map((donation) => ({
 			amount: donation.amount.total,
 			id: donation.id
 		}))
 
+		this.logger.debug(`Fetched ${donations.length} donations`)
+
 		let continuationToken = response.pagination.continuationToken
 
-		// Loop through all donations and add them to the total using pagination.totalPages
-		const totalPages = response.pagination.totalPages
-		if (totalPages > 1) {
-			for (let i = 2; i <= totalPages; i++) {
-				const response = await this.apiClient.ordersItems.ordersGetFormOrders(
-					"caisse-de-solidarite-2",
-					"2",
-					"Donation",
-					null,
-					null,
-					null,
-					i,
-					100,
-					continuationToken,
-					null,
-					null
-				)
-				total += response.data.reduce((acc, curr) => acc + curr.amount.total, 0)
-				continuationToken = response.pagination.continuationToken
-				donations = donations.concat(
-					response.data.map((donation) => ({
-						amount: donation.amount.total,
-						id: donation.id
-					}))
-				)
+		let pageCounter = 1
+
+		// Loop through all donations and add them to the total using pagination.continuationToken
+		while (continuationToken) {
+			pageCounter++
+			this.logger.debug(`Fetching next page of donations`)
+			const response = await this.apiClient.ordersItems.ordersGetFormOrders(
+				"caisse-de-solidarite-2",
+				"2",
+				"Donation",
+				null,
+				null,
+				null,
+				null,
+				100,
+				continuationToken,
+				true,
+				null
+			)
+
+			const moreDonations: DonationPayload[] = response.data.map((donation) => ({
+				amount: donation.amount.total,
+				id: donation.id
+			}))
+
+			if (moreDonations.length === 0) {
+				break
 			}
+
+			this.logger.debug(`Page: ${pageCounter}, Fetched ${moreDonations.length} donations`)
+			donations.push(...moreDonations)
+			continuationToken = response.pagination.continuationToken
 		}
+
+		const total = donations.reduce((acc, curr) => acc + curr.amount, 0)
 
 		this.logger.debug(`Total donations: ${(total / 100).toFixed(2)}€`)
 		this.counterService.updateCounter(total)
@@ -179,42 +188,48 @@ export class HelloAssoService {
 			1,
 			100,
 			null,
-			null,
+			true,
 			null
 		)
 
-		let donations: DonationPayload[] = response.data.map((donation) => ({
+		const donations: DonationPayload[] = response.data.map((donation) => ({
 			amount: donation.amount.total,
 			id: donation.id
 		}))
 
 		let continuationToken = response.pagination.continuationToken
+		let pageCounter = 1
 
-		// Loop through all donations and add them to the total using pagination.totalPages
-		const totalPages = response.pagination.totalPages
-		if (totalPages > 1) {
-			for (let i = 2; i <= totalPages; i++) {
-				const response = await this.apiClient.ordersItems.ordersGetFormOrders(
-					"caisse-de-solidarite-2",
-					"2",
-					"Donation",
-					lastFetch.toISOString(),
-					newFetch.toISOString(),
-					null,
-					i,
-					100,
-					continuationToken,
-					null,
-					null
-				)
-				continuationToken = response.pagination.continuationToken
-				donations = donations.concat(
-					response.data.map((donation) => ({
-						amount: donation.amount.total,
-						id: donation.id
-					}))
-				)
+		// Loop through all donations and add them to the total using pagination.continuationToken
+		while (continuationToken) {
+			pageCounter++
+			this.logger.debug(`Fetching next page of donations`)
+			const response = await this.apiClient.ordersItems.ordersGetFormOrders(
+				"caisse-de-solidarite-2",
+				"2",
+				"Donation",
+				lastFetch.toISOString(),
+				dayjs(newFetch).add(30, "second").toDate().toISOString(),
+				null,
+				null,
+				100,
+				continuationToken,
+				true,
+				null
+			)
+
+			const moreDonations: DonationPayload[] = response.data.map((donation) => ({
+				amount: donation.amount.total,
+				id: donation.id
+			}))
+
+			if (moreDonations.length === 0) {
+				break
 			}
+
+			this.logger.debug(`Page: ${pageCounter}, Fetched ${moreDonations.length} donations`)
+			donations.push(...moreDonations)
+			continuationToken = response.pagination.continuationToken
 		}
 
 		// Deduplicate donations by id
