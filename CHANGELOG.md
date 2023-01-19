@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/alex73630/piquetdestream-api/compare/v1.15.1...v1.16.0) (2023-01-19)
+
+
+### Features
+
+* save donations payloads in db for list ([5f68014](https://github.com/alex73630/piquetdestream-api/commit/5f680146bc9e10a3ef243fddcdef3a560778028f))
+
 ## [1.15.1](https://github.com/alex73630/piquetdestream-api/compare/v1.15.0...v1.15.1) (2023-01-19)
 
 
