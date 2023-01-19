@@ -8,13 +8,22 @@ export class DatabaseService {
 	constructor(private readonly prismaService: PrismaService) {}
 
 	async insertDonation(donation: HelloAssoDonationPayload) {
-		return this.prismaService.donation.create({
-			data: {
+		return this.prismaService.donation.upsert({
+			create: {
 				amount: donation.amount,
 				createdAt: donation.createdAt,
 				id: donation.id,
 				message: donation.message,
 				name: donation.name
+			},
+			update: {
+				amount: donation.amount,
+				createdAt: donation.createdAt,
+				message: donation.message,
+				name: donation.name
+			},
+			where: {
+				id: donation.id
 			}
 		})
 	}
@@ -27,7 +36,8 @@ export class DatabaseService {
 				id: donation.id,
 				message: donation.message,
 				name: donation.name
-			}))
+			})),
+			skipDuplicates: true
 		})
 	}
 
