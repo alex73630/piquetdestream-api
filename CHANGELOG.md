@@ -1,3 +1,10 @@
+## [1.13.3](https://github.com/alex73630/piquetdestream-api/compare/v1.13.2...v1.13.3) (2023-01-19)
+
+
+### Bug Fixes
+
+* **helloasso:** broken refresh total continuationToken logic ([7c5a5cc](https://github.com/alex73630/piquetdestream-api/commit/7c5a5ccb389febad7059fc5b7816b129142c05b6))
+
 ## [1.13.2](https://github.com/alex73630/piquetdestream-api/compare/v1.13.1...v1.13.2) (2023-01-18)
 
 
