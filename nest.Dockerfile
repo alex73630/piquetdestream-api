@@ -23,6 +23,7 @@ RUN npm install
 
 COPY --chown=nestuser:nestuser . .
 
+RUN npm run prisma:generate
 RUN npm run build
 
 CMD ["npm", "run", "start:dev"]
@@ -55,6 +56,7 @@ RUN npm pkg delete scripts.prepare && npm install --only=production
 COPY --chown=nestuser:nestuser . .
 
 COPY --chown=nestuser:nestuser --from=development /usr/src/app/dist ./dist
+COPY --chown=nestuser:nestuser --from=development /usr/src/app/node_modules/.prisma ./node_modules/.prisma
 
 CMD ["node", "dist/main"]
 
