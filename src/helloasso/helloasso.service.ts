@@ -110,8 +110,7 @@ export class HelloAssoService {
 
 		this.logger.debug(`Fetched ${donations.length} donations`)
 
-		let continuationToken = response.pagination.continuationToken
-
+		let continuationToken = response.pagination.totalCount > 100 ? response.pagination.continuationToken : null
 		let pageCounter = 1
 
 		// Loop through all donations and add them to the total using pagination.continuationToken
@@ -197,7 +196,7 @@ export class HelloAssoService {
 			id: donation.id
 		}))
 
-		let continuationToken = response.pagination.continuationToken
+		let continuationToken = response.pagination.totalCount > 100 ? response.pagination.continuationToken : null
 		let pageCounter = 1
 
 		// Loop through all donations and add them to the total using pagination.continuationToken
