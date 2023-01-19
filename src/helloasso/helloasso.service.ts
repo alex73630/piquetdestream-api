@@ -118,10 +118,10 @@ export class HelloAssoService {
 
 		const donations: HelloAssoDonationPayload[] = response.data.map((donation) => {
 			const donationName =
-				donation.items[0]?.customFields.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
+				donation.items[0]?.customFields?.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
 
 			const donationAnonymous =
-				donation.items[0]?.customFields.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
+				donation.items[0]?.customFields?.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
 
 			return {
 				amount: donation.amount.total,
@@ -156,10 +156,10 @@ export class HelloAssoService {
 
 			const moreDonations: HelloAssoDonationPayload[] = response.data.map((donation) => {
 				const donationName =
-					donation.items[0]?.customFields.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
+					donation.items[0]?.customFields?.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
 
 				const donationAnonymous =
-					donation.items[0]?.customFields.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
+					donation.items[0]?.customFields?.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
 
 				return {
 					amount: donation.amount.total,
@@ -226,10 +226,10 @@ export class HelloAssoService {
 
 		const donations: HelloAssoDonationPayload[] = response.data.map((donation) => {
 			const donationName =
-				donation.items[0]?.customFields.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
+				donation.items[0]?.customFields?.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
 
 			const donationAnonymous =
-				donation.items[0]?.customFields.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
+				donation.items[0]?.customFields?.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
 
 			return {
 				amount: donation.amount.total,
@@ -262,10 +262,10 @@ export class HelloAssoService {
 
 			const moreDonations: HelloAssoDonationPayload[] = response.data.map((donation) => {
 				const donationName =
-					donation.items[0]?.customFields.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
+					donation.items[0]?.customFields?.find((field) => field.name === "Ton pseudo Twitch")?.answer || null
 
 				const donationAnonymous =
-					donation.items[0]?.customFields.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
+					donation.items[0]?.customFields?.find((field) => field.name === "Anonymisation ?")?.answer === "Oui"
 
 				return {
 					amount: donation.amount.total,
