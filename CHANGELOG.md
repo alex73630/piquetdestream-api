@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/alex73630/piquetdestream-api/compare/v1.16.0...v1.16.1) (2023-01-19)
+
+
+### Bug Fixes
+
+* **docker:** missing prisma config ([a4e8e81](https://github.com/alex73630/piquetdestream-api/commit/a4e8e81176f0c891d4133350d24c2468d2f12d54))
+
 # [1.16.0](https://github.com/alex73630/piquetdestream-api/compare/v1.15.1...v1.16.0) (2023-01-19)
 
 
