@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common"
 import { HelloAssoDonationPayload } from "../helloasso/interfaces/helloasso-donation.interface"
 import { PrismaService } from "../prisma.service"
 import { DonationDbDto } from "./dto/donation-db.dto"
+import { DonationPerNameDto } from "./dto/donation-per-name.dto"
 
 @Injectable()
 export class DatabaseService {
@@ -52,5 +53,26 @@ export class DatabaseService {
 		})
 
 		return results.map((donation) => new DonationDbDto(donation))
+	}
+
+	// Get total donations per name, where name can be null (replace null by "Anonyme")
+	async getDonationsPerName() {
+		const results = await this.prismaService.$queryRaw<
+			{
+				name: string
+				total_donations: bigint
+			}[]
+		>`
+		SELECT
+			COALESCE(name, 'Anonyme') as name,
+			SUM(amount) as total_donations
+		FROM
+			"Donation"
+		GROUP BY
+			name
+		ORDER BY
+			total_donations DESC;`
+
+		return results.map((donation) => new DonationPerNameDto(donation))
 	}
 }

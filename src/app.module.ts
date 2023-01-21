@@ -10,7 +10,6 @@ import { RedisOptions } from "./config/redis/redis-config.interface"
 import { ExtendedConfigService } from "./config/config.service"
 import { ScheduleModule } from "@nestjs/schedule"
 import { DatabaseModule } from "./database/database.module"
-import { PrismaService } from "./prisma.service"
 
 @Module({
 	imports: [

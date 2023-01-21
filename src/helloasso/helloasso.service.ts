@@ -155,16 +155,6 @@ export class HelloAssoService {
 	}
 
 	async getDonationsSinceLastFetch() {
-		// Check if manual fetch is enabled
-		const manualFetchEnabled = this.configService.get<HelloAssoOptions["enableManualFetching"]>(
-			"helloasso.enableManualFetching"
-		)
-
-		if (!manualFetchEnabled) {
-			this.logger.debug("Manual fetch enabled, skipping cron job")
-			return
-		}
-
 		this.logger.debug("Fetching donations since last fetch date...")
 
 		const redisLastFetch = await this.redisService.getLastDonationFetch()
