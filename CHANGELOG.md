@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/alex73630/piquetdestream-api/compare/v1.17.0...v1.18.0) (2023-01-21)
+
+
+### Features
+
+* **counter:** add leaderboard route ([694123b](https://github.com/alex73630/piquetdestream-api/commit/694123b9479cec057f104c19ac18567efd6ce7f2))
+
 # [1.17.0](https://github.com/alex73630/piquetdestream-api/compare/v1.16.2...v1.17.0) (2023-01-19)
 
 
