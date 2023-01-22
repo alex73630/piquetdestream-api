@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/alex73630/piquetdestream-api/compare/v1.18.0...v1.18.1) (2023-01-22)
+
+
+### Bug Fixes
+
+* **helloasso:** fallback on refresh token in case of invalid token ([c242bb9](https://github.com/alex73630/piquetdestream-api/commit/c242bb9e1ea40e712ba7385f5bb6e4302b00cf2b))
+
 # [1.18.0](https://github.com/alex73630/piquetdestream-api/compare/v1.17.0...v1.18.0) (2023-01-21)
 
 
