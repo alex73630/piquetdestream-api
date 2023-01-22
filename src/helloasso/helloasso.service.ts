@@ -240,7 +240,7 @@ export class HelloAssoService {
 		return { total: (total / 100).toFixed(2) }
 	}
 
-	async resolveAccessToken() {
+	async resolveAccessToken(forceRefresh = false) {
 		// Check if access token is still valid
 		const accessToken = await this.redisService.getAccessToken()
 		if (accessToken) {
@@ -251,7 +251,7 @@ export class HelloAssoService {
 		const refreshToken = await this.redisService.getRefreshToken()
 		let response: Response
 
-		if (refreshToken) {
+		if (refreshToken && !forceRefresh) {
 			// If so, use it to get a new access token
 			response = await fetch("https://api.helloasso.com/oauth2/token", {
 				method: "POST",
@@ -282,6 +282,11 @@ export class HelloAssoService {
 		const date = new Date(response.headers.get("Date"))
 
 		const data = (await response.json()) as HelloAssoApiAuthTokenResponse
+
+		if (refreshToken && !data.access_token) {
+			this.logger.warn("No access token found in response, forcing refresh token")
+			return this.resolveAccessToken(true)
+		}
 
 		// Set expiration date from data expires_in
 		const accessExpirationDate = new Date(date.getTime() + data.expires_in * 1000)
