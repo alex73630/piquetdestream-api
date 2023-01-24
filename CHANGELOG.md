@@ -1,3 +1,10 @@
+## [1.19.1](https://github.com/alex73630/piquetdestream-api/compare/v1.19.0...v1.19.1) (2023-01-24)
+
+
+### Bug Fixes
+
+* **cors:** temporarly disable cors ([f92c1e8](https://github.com/alex73630/piquetdestream-api/commit/f92c1e8ec9a1601362241cb5c41c939e10a6dbfb))
+
 # [1.19.0](https://github.com/alex73630/piquetdestream-api/compare/v1.18.1...v1.19.0) (2023-01-24)
 
 
