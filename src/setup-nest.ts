@@ -25,7 +25,13 @@ export async function setupNest(app: NestExpressApplication | INestApplication):
 	const origins = configService.get<NestOptions["corsOrigins"]>("nest.corsOrigins")
 
 	app.enableCors({
-		origin: origins,
+		origin: (origin, callback) => {
+			if (!origin || origins.includes(origin)) {
+				callback(null, true)
+			} else {
+				callback(new Error(`CORS blocked request from origin ${origin}`))
+			}
+		},
 		credentials: true
 	})
 
