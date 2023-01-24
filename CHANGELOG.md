@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/alex73630/piquetdestream-api/compare/v1.18.1...v1.19.0) (2023-01-24)
+
+
+### Features
+
+* **cors:** enhance cors support ([d389ce8](https://github.com/alex73630/piquetdestream-api/commit/d389ce86996d70b4f9a0fca96ce045ab3e699381))
+
 ## [1.18.1](https://github.com/alex73630/piquetdestream-api/compare/v1.18.0...v1.18.1) (2023-01-22)
 
 
