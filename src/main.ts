@@ -19,7 +19,7 @@ async function bootstrap() {
 	app.useLogger(logger)
 
 	// Setup the server
-	setupNest(app)
+	setupNest(app, logger)
 
 	// Start listening
 	const port = configService.get<NestOptions["port"]>("nest.port", 3000)

@@ -1,4 +1,4 @@
-import { ClassSerializerInterceptor, INestApplication, ValidationPipe, VersioningType } from "@nestjs/common"
+import { ClassSerializerInterceptor, INestApplication, Logger, ValidationPipe, VersioningType } from "@nestjs/common"
 import { Reflector } from "@nestjs/core"
 import { NestExpressApplication } from "@nestjs/platform-express"
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger"
@@ -8,7 +8,7 @@ import { ExtendedConfigService } from "./config/config.service"
 import { NestOptions } from "./config/nest/nest-config.interface"
 import { PrismaService } from "./prisma.service"
 
-export async function setupNest(app: NestExpressApplication | INestApplication): Promise<void> {
+export async function setupNest(app: NestExpressApplication | INestApplication, logger: Logger): Promise<void> {
 	// Setup shutdown hooks
 	try {
 		const prismaService = app.get(PrismaService)
@@ -31,6 +31,7 @@ export async function setupNest(app: NestExpressApplication | INestApplication):
 			} else {
 				// callback(new Error(`CORS blocked request from origin ${origin}`))
 				// Temporarily disable CORS
+				logger.warn(`CORS allowed request from unauthorized origin: ${origin}`)
 				callback(null, true)
 			}
 		},

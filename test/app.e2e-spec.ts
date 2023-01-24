@@ -1,5 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing"
-import { INestApplication } from "@nestjs/common"
+import { INestApplication, Logger } from "@nestjs/common"
 import * as request from "supertest"
 import { setupNest } from "../src/setup-nest"
 import { MockModule } from "../src/utils/mock.module"
@@ -25,8 +25,10 @@ describe("AppController (e2e)", () => {
 			providers: [AppService]
 		}).compile()
 
+		const logger = new Logger("NestApplication")
+
 		app = moduleFixture.createNestApplication()
-		setupNest(app)
+		setupNest(app, logger)
 		await app.init()
 	})
 
