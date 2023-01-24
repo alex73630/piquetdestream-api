@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/alex73630/piquetdestream-api/compare/v1.19.1...v1.20.0) (2023-01-24)
+
+
+### Features
+
+* **cors:** add logging ([993cb61](https://github.com/alex73630/piquetdestream-api/commit/993cb61555dc8acde026573c9b0f7a9998612ed9))
+
 ## [1.19.1](https://github.com/alex73630/piquetdestream-api/compare/v1.19.0...v1.19.1) (2023-01-24)
 
 
