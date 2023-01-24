@@ -29,7 +29,9 @@ export async function setupNest(app: NestExpressApplication | INestApplication):
 			if (!origin || origins.includes(origin)) {
 				callback(null, true)
 			} else {
-				callback(new Error(`CORS blocked request from origin ${origin}`))
+				// callback(new Error(`CORS blocked request from origin ${origin}`))
+				// Temporarily disable CORS
+				callback(null, true)
 			}
 		},
 		credentials: true
