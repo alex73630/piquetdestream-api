@@ -149,7 +149,7 @@ export class HelloAssoService {
 		this.logger.debug(`Total donations: ${(total / 100).toFixed(2)}€`)
 		this.counterService.updateCounter(total)
 		this.redisService.addDonations(donations)
-		this.databaseService.insertDonations(donations)
+		this.databaseService.upsertDonations(donations)
 		this.redisService.setLastDonationFetch(lastFetch)
 		return { total: (total / 100).toFixed(2) }
 	}

@@ -42,6 +42,27 @@ export class DatabaseService {
 		})
 	}
 
+	async upsertDonations(donations: HelloAssoDonationPayload[]) {
+		return this.prismaService.$transaction([
+			this.prismaService.donation.deleteMany({
+				where: {
+					id: {
+						in: donations.map((donation) => donation.id)
+					}
+				}
+			}),
+			this.prismaService.donation.createMany({
+				data: donations.map((donation) => ({
+					amount: donation.amount,
+					createdAt: donation.createdAt,
+					id: donation.id,
+					message: donation.message,
+					name: donation.name
+				}))
+			})
+		])
+	}
+
 	// Get donations with pagination
 	async getDonations(skip = 0, take = 10) {
 		const results = await this.prismaService.donation.findMany({
