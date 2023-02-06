@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/alex73630/piquetdestream-api/compare/v1.20.1...v1.21.0) (2023-02-06)
+
+
+### Features
+
+* **helloasso:** upsert db entries on refresh-total ([018816b](https://github.com/alex73630/piquetdestream-api/commit/018816b9c554c2ae10e6be3987cab831ac2f2ad6))
+
 ## [1.20.1](https://github.com/alex73630/piquetdestream-api/compare/v1.20.0...v1.20.1) (2023-02-06)
 
 
