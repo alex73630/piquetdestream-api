@@ -1,3 +1,10 @@
+## [1.20.1](https://github.com/alex73630/piquetdestream-api/compare/v1.20.0...v1.20.1) (2023-02-06)
+
+
+### Bug Fixes
+
+* **helloasso:** username prompt changed in form ([7cdfcaf](https://github.com/alex73630/piquetdestream-api/commit/7cdfcaf35e5959fd5830033d79fba2092d1f0a48))
+
 # [1.20.0](https://github.com/alex73630/piquetdestream-api/compare/v1.19.1...v1.20.0) (2023-01-24)
 
 
