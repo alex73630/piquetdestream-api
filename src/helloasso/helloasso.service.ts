@@ -306,7 +306,9 @@ export class HelloAssoService {
 	private getCustomFields(data: HelloAsso_Api_V5_Models_Statistics_OrderDetail) {
 		const donationName =
 			data.items && data.items[0] && data.items[0].customFields
-				? data.items[0]?.customFields?.find((field) => field.name === "Votre pseudo Twitch")?.answer || null
+				? data.items[0]?.customFields?.find(
+						(field) => field.name === "Votre pseudo Twitch" || field.name === "Ton pseudo Twitch"
+				  )?.answer || null
 				: null
 
 		const donationAnonymous =
