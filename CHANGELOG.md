@@ -1,3 +1,10 @@
+## [1.21.1](https://github.com/alex73630/piquetdestream-api/compare/v1.21.0...v1.21.1) (2023-02-12)
+
+
+### Bug Fixes
+
+* **helloasso:** backward compatible username filter ([fb25ece](https://github.com/alex73630/piquetdestream-api/commit/fb25ece2ebc5f380e1465d7e7005b29f7b4bdb36))
+
 # [1.21.0](https://github.com/alex73630/piquetdestream-api/compare/v1.20.1...v1.21.0) (2023-02-06)
 
 
