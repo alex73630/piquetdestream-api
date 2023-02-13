@@ -1,6 +1,7 @@
 import { Injectable, Logger } from "@nestjs/common"
 import { Once, InjectDiscordClient, On } from "@discord-nestjs/core"
-import { Client, Events, GuildMember, Message } from "discord.js"
+import { Client, Events, GuildMember } from "discord.js"
+import { PrismaService } from "../prisma.service"
 
 @Injectable()
 export class BotGateway {
@@ -8,7 +9,8 @@ export class BotGateway {
 
 	constructor(
 		@InjectDiscordClient()
-		private readonly client: Client
+		private readonly client: Client,
+		private readonly prismaService: PrismaService
 	) {}
 
 	@Once("ready")
@@ -19,6 +21,7 @@ export class BotGateway {
 	@On(Events.GuildMemberAdd)
 	async onGuildMemberAdd(member: GuildMember) {
 		this.logger.log(`New member ${member.user.tag} joined!`)
+
 		// Send a private message to the new member
 		await member.send("Welcome to the server!")
 	}

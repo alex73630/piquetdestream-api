@@ -16,6 +16,7 @@ import { ScheduleModule } from "@nestjs/schedule"
 	imports: [
 		ExtendedConfigModule,
 		ScheduleModule.forRoot(),
+		DatabaseModule,
 		...(process.env.DISCORD_BOT_ONLY === "true"
 			? []
 			: [
@@ -23,7 +24,6 @@ import { ScheduleModule } from "@nestjs/schedule"
 						? [HelloAssoModule]
 						: []),
 					CounterModule,
-					DatabaseModule,
 					RedisModule,
 					NestRedisModule.forRootAsync({
 						imports: [ExtendedConfigModule],

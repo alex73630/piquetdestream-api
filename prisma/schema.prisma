@@ -17,3 +17,10 @@ model Donation {
   name      String?
   message   String?
 }
+
+model DiscordBotMessages {
+  id        Int    @id @default(autoincrement())
+  createdAt BigInt
+  name      String
+  message   String
+}

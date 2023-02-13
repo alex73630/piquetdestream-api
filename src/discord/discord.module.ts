@@ -4,6 +4,7 @@ import { ExtendedConfigModule } from "../config/config.module"
 import { ExtendedConfigService } from "../config/config.service"
 import { GatewayIntentBits } from "discord.js"
 import { BotGateway } from "./bot.gateway"
+import { DatabaseModule } from "../database/database.module"
 
 @Module({
 	imports: [
@@ -21,7 +22,8 @@ import { BotGateway } from "./bot.gateway"
 					]
 				}
 			})
-		})
+		}),
+		DatabaseModule
 	],
 	providers: [BotGateway]
 })
