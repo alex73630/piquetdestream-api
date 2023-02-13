@@ -1,17 +1,22 @@
 import { Expose, Transform } from "class-transformer"
-import { IsBoolean, IsString } from "class-validator"
+import { IsBoolean, IsNotEmpty, IsString, ValidateIf } from "class-validator"
 
 export class HelloAssoConfigDto {
 	@Expose()
+	@ValidateIf((value) => value.HELLOASSO_CLIENT_ID || value.HELLOASSO_CLIENT_SECRET)
 	@IsString()
-	HELLOASSO_CLIENT_ID: string
+	@IsNotEmpty()
+	HELLOASSO_CLIENT_ID?: string
 
 	@Expose()
+	@ValidateIf((value) => value.HELLOASSO_CLIENT_ID || value.HELLOASSO_CLIENT_SECRET)
 	@IsString()
-	HELLOASSO_CLIENT_SECRET: string
+	@IsNotEmpty()
+	HELLOASSO_CLIENT_SECRET?: string
 
 	@Expose()
+	@ValidateIf((value) => value.HELLOASSO_CLIENT_ID || value.HELLOASSO_CLIENT_SECRET)
 	@IsBoolean()
 	@Transform(({ value }) => value === "true")
-	HELLOASSO_ENABLE_MANUAL_FETCHING: boolean
+	HELLOASSO_ENABLE_MANUAL_FETCHING?: boolean = false
 }

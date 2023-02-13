@@ -8,28 +8,36 @@ import { RedisModule } from "./redis/redis.module"
 import { RedisModule as NestRedisModule } from "@liaoliaots/nestjs-redis"
 import { RedisOptions } from "./config/redis/redis-config.interface"
 import { ExtendedConfigService } from "./config/config.service"
-import { ScheduleModule } from "@nestjs/schedule"
 import { DatabaseModule } from "./database/database.module"
+import { DiscordModule } from "./discord/discord.module"
+import { ScheduleModule } from "@nestjs/schedule"
 
 @Module({
 	imports: [
 		ExtendedConfigModule,
-		HelloAssoModule,
-		CounterModule,
-		RedisModule,
-		NestRedisModule.forRootAsync({
-			imports: [ExtendedConfigModule],
-			inject: [ExtendedConfigService],
-			useFactory: async (configService: ExtendedConfigService) => {
-				return {
-					config: {
-						url: configService.get<RedisOptions["url"]>("redis.url")
-					}
-				}
-			}
-		}),
 		ScheduleModule.forRoot(),
-		DatabaseModule
+		...(process.env.DISCORD_BOT_ONLY === "true"
+			? []
+			: [
+					...(process.env.HELLOASSO_CLIENT_ID || process.env.HELLOASSO_CLIENT_SECRET
+						? [HelloAssoModule]
+						: []),
+					CounterModule,
+					DatabaseModule,
+					RedisModule,
+					NestRedisModule.forRootAsync({
+						imports: [ExtendedConfigModule],
+						inject: [ExtendedConfigService],
+						useFactory: async (configService: ExtendedConfigService) => {
+							return {
+								config: {
+									url: configService.get<RedisOptions["url"]>("redis.url")
+								}
+							}
+						}
+					})
+			  ]),
+		...(process.env.DISCORD_BOT_TOKEN ? [DiscordModule] : [])
 	],
 	controllers: [AppController],
 	providers: [AppService]

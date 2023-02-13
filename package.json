@@ -34,6 +34,8 @@
 		"prepare": "is-ci || husky install"
 	},
 	"dependencies": {
+		"@discord-nestjs/common": "^5.1.4",
+		"@discord-nestjs/core": "^5.2.1",
 		"@liaoliaots/nestjs-redis": "^9.0.5",
 		"@nestjs/common": "^9.3.8",
 		"@nestjs/config": "^2.3.1",
@@ -46,6 +48,7 @@
 		"class-transformer": "^0.5.1",
 		"class-validator": "^0.14.0",
 		"dayjs": "^1.11.7",
+		"discord.js": "^14.7.1",
 		"helmet": "^6.0.1",
 		"ioredis": "^5.3.1",
 		"is-ci": "^3.0.1",

@@ -9,15 +9,20 @@ import { NestOptions } from "./config/nest/nest-config.interface"
 import { PrismaService } from "./prisma.service"
 
 export async function setupNest(app: NestExpressApplication | INestApplication, logger: Logger): Promise<void> {
+	const configService = app.get(ExtendedConfigService)
+
 	// Setup shutdown hooks
 	try {
+		if (configService.get("discord.botOnly")) {
+			logger.warn("Discord bot mode enabled, skipping Prisma shutdown hooks")
+			throw new Error("Discord bot mode enabled, skipping Prisma shutdown hooks")
+		}
 		const prismaService = app.get(PrismaService)
+		if (!prismaService) throw new Error("Prisma service not found")
 		await prismaService.enableShutdownHooks(app)
 	} catch (error) {
 		app.enableShutdownHooks()
 	}
-
-	const configService = app.get(ExtendedConfigService)
 
 	app.use(helmet())
 
