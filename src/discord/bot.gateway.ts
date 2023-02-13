@@ -23,6 +23,6 @@ export class BotGateway {
 		this.logger.log(`New member ${member.user.tag} joined!`)
 
 		// Send a private message to the new member
-		await member.send("Welcome to the server!")
+		await member.send("Bienvenu sur le serveur!")
 	}
 }
