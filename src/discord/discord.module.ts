@@ -5,6 +5,7 @@ import { ExtendedConfigService } from "../config/config.service"
 import { GatewayIntentBits } from "discord.js"
 import { BotGateway } from "./bot.gateway"
 import { DatabaseModule } from "../database/database.module"
+import { UpdateMessage } from "./update-message.command"
 
 @Module({
 	imports: [
@@ -20,11 +21,17 @@ import { DatabaseModule } from "../database/database.module"
 						GatewayIntentBits.GuildMessageReactions,
 						GatewayIntentBits.GuildMembers
 					]
-				}
+				},
+				registerCommandOptions: [
+					{
+						forGuild: "1074690667235790869",
+						removeCommandsBefore: true
+					}
+				]
 			})
 		}),
 		DatabaseModule
 	],
-	providers: [BotGateway]
+	providers: [BotGateway, UpdateMessage]
 })
 export class DiscordModule {}

@@ -22,7 +22,15 @@ export class BotGateway {
 	async onGuildMemberAdd(member: GuildMember) {
 		this.logger.log(`New member ${member.user.tag} joined!`)
 
-		// Send a private message to the new member
-		await member.send("Bienvenu sur le serveur!")
+		// Load the bienvenu message from the database
+		const message = await this.prismaService.discordBotMessages.findFirst({
+			where: { name: "WELCOME" }
+		})
+		// Send a set data Base private message to the new member
+		if (message) {
+			return await member.send(message.message)
+		}
+		// Send a default private message to the new member
+		await member.send("Bienvenue sur le serveur!")
 	}
 }
