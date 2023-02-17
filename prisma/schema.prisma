@@ -24,3 +24,9 @@ model DiscordBotMessages {
   name      String @unique
   message   String
 }
+
+model StreamDate {
+	id          Int      @id @default(autoincrement())
+	streamer    String @unique
+	streamHour  BigInt?
+  }

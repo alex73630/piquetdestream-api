@@ -6,6 +6,9 @@ import { GatewayIntentBits } from "discord.js"
 import { BotGateway } from "./bot.gateway"
 import { DatabaseModule } from "../database/database.module"
 import { UpdateMessage } from "./update-message.command"
+import { AddStreamDate } from "./add-stream.command"
+import { RemindStream } from "./RemindStream"
+//import { AddStream } from "./add-stream.command"
 
 @Module({
 	imports: [
@@ -32,6 +35,6 @@ import { UpdateMessage } from "./update-message.command"
 		}),
 		DatabaseModule
 	],
-	providers: [BotGateway, UpdateMessage]
+	providers: [BotGateway, UpdateMessage, AddStreamDate, RemindStream]
 })
 export class DiscordModule {}
