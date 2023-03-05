@@ -53,4 +53,11 @@ export class CounterController {
 	async getLeaderboard(): Promise<DonationPerNameDto[]> {
 		return this.databaseService.getDonationsPerName()
 	}
+
+	@UseGuards(BearerTokenAuthGuard)
+	@ApiBearerAuth()
+	@Get("test-overlay")
+	async testOverlay(): Promise<void> {
+		return this.counterService.sendFakeDonationToSse()
+	}
 }

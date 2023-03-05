@@ -79,6 +79,29 @@ export class CounterService {
 		return this.redisService.resetCounter()
 	}
 
+	public async sendFakeDonationToSse(): Promise<void> {
+		const amount = Math.random() * 10000
+		const payload = await this.redisService.getCounterValue()
+		const total = payload.amount + amount
+		this.counterSubject.next({
+			data: {
+				id: 0,
+				amount: amountToFloat(amount),
+				name: "Fake",
+				message: "Fake donation",
+				createdAt: Date.now()
+			},
+			type: "new-donation"
+		})
+		this.counterSubject.next({
+			data: {
+				amount: amountToFloat(total),
+				updatedAt: Date.now()
+			},
+			type: "counter-update"
+		})
+	}
+
 	@Cron("*/10 * * * * *")
 	private keepAlive(): void {
 		this.counterSubject.next({ data: { time: new Date().getTime() }, type: "keep-alive" })
