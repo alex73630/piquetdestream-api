@@ -1,3 +1,11 @@
+## [1.21.2](https://github.com/alex73630/piquetdestream-api/compare/v1.21.1...v1.21.2) (2023-03-05)
+
+
+### Bug Fixes
+
+* **ci:** bug with access token ([dbabac8](https://github.com/alex73630/piquetdestream-api/commit/dbabac8badd94c8f99b4d60bd559845a64412261))
+* **counter:** add test-overlay feature for debug ([0df157c](https://github.com/alex73630/piquetdestream-api/commit/0df157c58ca59456d678a6c5e1350b1c6a946cdb))
+
 ## [1.21.1](https://github.com/alex73630/piquetdestream-api/compare/v1.21.0...v1.21.1) (2023-02-12)
 
 
