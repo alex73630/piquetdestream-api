@@ -21,6 +21,12 @@ model Donation {
 model DiscordBotMessages {
   id        Int    @id @default(autoincrement())
   createdAt BigInt
-  name      String
+  name      String @unique
   message   String
 }
+
+model StreamDate {
+	id          Int      @id @default(autoincrement())
+	streamer    String @unique
+	streamHour  BigInt?
+  }
